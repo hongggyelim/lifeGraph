@@ -1,0 +1,6 @@
+@import "./variables";
+@import "./reset";
+
+body {
+  background-color: $primary-color-100; /* primary 색상을 배경색으로 사용 */
+}
