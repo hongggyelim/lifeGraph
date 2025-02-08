@@ -1,5 +1,16 @@
 @import "../../variables.scss";
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  p {
+    font-size: 20px;
+    font-weight: 600;
+  }
+}
 #form {
   display: flex;
   flex-direction: column;
