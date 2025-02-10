@@ -18,6 +18,9 @@ const MainPage = () => {
     }
   }, []);
 
+  const handleClick = (x: number, y: number) => {
+    //
+  };
   return (
     <main>
       <div className="main-div">
@@ -27,7 +30,7 @@ const MainPage = () => {
             <span>{name}님이 가장 행복했던 기억은 언제인가요?</span>
             <span>기억에 남는 순간을 점수로 기록해보세요</span>
           </p>
-          <Graph />
+          <Graph onClick={handleClick} />
         </div>
       </div>
     </main>
