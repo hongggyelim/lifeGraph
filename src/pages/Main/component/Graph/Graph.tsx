@@ -1,27 +1,21 @@
-import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useRef } from "react";
 import "./graph.scss";
 import Point from "../Point/Point";
-
-interface PointData {
-  id: number;
-  x: number;
-  y: number;
-  title: string;
-}
+import { useGraphStore } from "../../../../store/useGraphStore";
 
 const Graph = () => {
-  const [points, setPoints] = useState<PointData[]>([]);
+  const { points, addPoint, setTitle } = useGraphStore();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    setPoints((prev) => [...prev, { id: Date.now(), x, y, title: "" }]); // 클릭한 좌표 저장
+    addPoint({ id: Date.now(), x, y, title: "" }); // 클릭한 좌표 추가가
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
-    setPoints((prev) => prev.map((point) => (point.id === id ? { ...point, title: e.target.value } : point)));
+    setTitle(id, e.target.value);
   };
 
   useEffect(() => {
