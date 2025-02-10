@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import "./graph.scss";
 import Point from "./Point";
 
-const Graph = ({ onClick }: { onClick: (x: number, y: number) => void }) => {
-  const [points, setPoints] = useState<{ x: number; y: number }[]>([]);
+interface PointData {
+  id: number;
+  x: number;
+  y: number;
+  title: string;
+}
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+const Graph = () => {
+  const [points, setPoints] = useState<PointData[]>([]);
 
-    setPoints((prev) => [...prev, { x, y }]); // 클릭한 좌표 저장
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setPoints((prev) => [...prev, { id: Date.now(), x, y, title: "" }]); // 클릭한 좌표 저장
+  };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
+    setPoints((prev) => prev.map((point) => (point.id === id ? { ...point, title: e.target.value } : point)));
   };
   return (
     <div className="graph-container" onClick={handleClick}>
-      {points.map((point, index) => (
-        <Point key={index} x={point.x} y={point.y} />
+      {points.map((point) => (
+        <Point key={point.id} x={point.x} y={point.y} title={point.title} onChange={(e) => handleChange(e, point.id)} />
       ))}
       <div className="graph-upper"></div>
       <div className="graph-below"></div>

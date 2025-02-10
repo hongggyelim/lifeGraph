@@ -1,4 +1,21 @@
-const Point = ({ x, y }: { x: number; y: number }) => {
+import { ChangeEvent, useEffect, useRef } from "react";
+
+const Point = ({
+  x,
+  y,
+  title,
+  onChange,
+}: {
+  x: number;
+  y: number;
+  title: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
   return (
     <div
       style={{
@@ -6,12 +23,12 @@ const Point = ({ x, y }: { x: number; y: number }) => {
         width: "4px",
         height: "4px",
         color: "blue",
-        top: `${y - 5}px`,
-        left: `${x - 5}px`,
+        top: `${y}px`,
+        left: `${x}px`,
         borderRadius: "50%",
       }}
     >
-      ●
+      <input type="text" value={title} ref={inputRef} onChange={onChange} />
     </div>
   );
 };
