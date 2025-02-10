@@ -11,4 +11,25 @@
     flex-direction: column;
     padding: 20px 0;
   }
+  #button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    button {
+      background-color: $primary-color-300;
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      height: 50px;
+      width: 200px;
+      border-radius: 20px;
+      padding: 8px;
+    }
+
+    #reset-button {
+      background-color: $primary-color-200;
+    }
+  }
 }

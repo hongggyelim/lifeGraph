@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { InfoType } from "../../types/userInfoType";
 import "./main.scss";
 import Graph from "./component/Graph/Graph";
+import { useGraphStore } from "../../store/useGraphStore";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -9,6 +11,8 @@ const MainPage = () => {
     birthYear: 1990,
   });
   const { name, birthYear } = info;
+  const { resetPoints } = useGraphStore();
+  const navigate = useNavigate();
 
   // 페이지 로드 시 로컬 데이터 가져오기
   useEffect(() => {
@@ -17,6 +21,11 @@ const MainPage = () => {
       setInfo(JSON.parse(storedInfo));
     }
   }, []);
+
+  const handleClickReset = () => {
+    const deleteConfirm = window.confirm("지금까지 입력한 데이터를 삭제하시겠습니까?");
+    if (deleteConfirm) resetPoints();
+  };
 
   return (
     <main>
@@ -28,6 +37,14 @@ const MainPage = () => {
             <span>기억에 남는 순간을 점수로 기록해보세요</span>
           </p>
           <Graph />
+          <div id="button-wrapper">
+            <button type="button" id="reset-button" onClick={handleClickReset}>
+              reset
+            </button>
+            <button type="button" onClick={() => navigate("/result")}>
+              그래프 생성하기
+            </button>
+          </div>
         </div>
       </div>
     </main>
