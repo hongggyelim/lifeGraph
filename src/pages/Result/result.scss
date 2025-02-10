@@ -1,0 +1,24 @@
+@import "../../variables.scss";
+.result-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+#result-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  button {
+    background-color: $primary-color-300;
+    color: white;
+    font-size: 18px;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 8px;
+  }
+  div {
+    display: flex;
+    gap: 20px;
+  }
+}
