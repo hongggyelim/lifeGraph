@@ -11,28 +11,34 @@ const ResultGraph = () => {
     const sorted = [...points].sort((a, b) => a.x - b.x);
     setData(sorted);
   }, []);
+
   const generatePath = (points: { x: number; y: number }[]) => {
-    if (points.length < 2) return ""; // 두 점 이상이 필요
+    if (points.length < 2) return ""; // 최소 두 점 필요
 
-    // Catmull-Rom Spline을 사용하여 점들 사이를 부드럽게 연결
-    let path = `M ${points[0].x} ${points[0].y}`; // 첫 번째 점으로 시작
+    let path = `M ${points[0].x} ${points[0].y}`; // 시작점
 
-    // 점들 사이의 부드러운 경로 생성
-    for (let i = 1; i < points.length - 2; i++) {
-      const p0 = points[i - 1];
-      const p1 = points[i];
-      const p2 = points[i + 1];
-      const p3 = points[i + 2];
+    if (points.length === 2) {
+      // 점이 2개뿐이면 직선 연결
+      path += ` L ${points[1].x} ${points[1].y}`;
+      return path;
+    }
 
-      // Catmull-Rom Spline 공식
-      const cx1 = (p0.x + p1.x) / 2;
-      const cy1 = (p0.y + p1.y) / 2;
-      const cx2 = (p1.x + p2.x) / 2;
-      const cy2 = (p1.y + p2.y) / 2;
-      const cx3 = (p2.x + p3.x) / 2; // 마지막 제어점
-      const cy3 = (p2.y + p3.y) / 2; // 마지막 제어점
+    // Catmull-Rom Spline 보간
+    for (let i = 0; i < points.length - 1; i++) {
+      const p0 = points[i === 0 ? i : i - 1]; // 이전 점 (처음이면 자기 자신)
+      const p1 = points[i]; // 현재 점
+      const p2 = points[i + 1]; // 다음 점
+      const p3 = points[i + 2 < points.length ? i + 2 : i + 1]; // 다음다음 점 (마지막이면 자기 자신)
 
-      path += ` C ${cx1} ${cy1}, ${cx2} ${cy2}, ${cx3} ${cy3}, ${p3.x} ${p3.y}`; // Catmull-Rom 곡선 추가
+      // Catmull-Rom 공식으로 제어점 계산
+      const tension = 0.2; // 0에 가까우면 직선
+      const cp1x = p1.x + (p2.x - p0.x) * tension;
+      const cp1y = p1.y + (p2.y - p0.y) * tension;
+      const cp2x = p2.x - (p3.x - p1.x) * tension;
+      const cp2y = p2.y - (p3.y - p1.y) * tension;
+
+      // Cubic Bezier 곡선 추가
+      path += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p2.x} ${p2.y}`;
     }
 
     return path;
