@@ -1,0 +1,38 @@
+.home-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.home-div form div {
+  width: 100%;
+}
+.home-div form label {
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px 0;
+}
+.home-div form input {
+  background-color: white;
+  height: 40px;
+  width: full;
+  padding: 20px;
+  border-radius: 8px;
+}
+.home-div form button {
+  background-color: #4e7fdb;
+  width: 30%;
+  height: 40px;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+.home-div form span {
+  color: gray;
+}/*# sourceMappingURL=home.css.map */

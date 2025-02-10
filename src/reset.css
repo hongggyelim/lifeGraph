@@ -1,0 +1,63 @@
+/* src/styles/reset.scss */
+/* Reset all margins and paddings */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default link underlines */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset default table styles */
+table {
+  border-collapse: collapse;
+}
+
+/* Reset default form input styles */
+input,
+textarea,
+select,
+button {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+/* Remove default heading styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* For body and html */
+body,
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+}
+
+/* For images */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}/*# sourceMappingURL=reset.css.map */

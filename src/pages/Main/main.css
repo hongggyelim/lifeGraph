@@ -1,0 +1,11 @@
+.main-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.main-div p {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}/*# sourceMappingURL=main.css.map */
