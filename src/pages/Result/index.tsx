@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useGraphStore } from "../../store/useGraphStore";
 import { InfoType } from "../../types/userInfoType";
 import "./result.scss";
+import ResultGraph from "./Graph/ResultGraph";
 
 const ResultPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -10,7 +10,6 @@ const ResultPage = () => {
     birthYear: 1990,
   });
   const { name, birthYear } = info;
-  const { points } = useGraphStore();
   const navigate = useNavigate();
 
   // 페이지 로드 시 로컬 데이터 가져오기
@@ -40,18 +39,19 @@ const ResultPage = () => {
           <b className="result-title">
             {name}님의 인생은 {type[1]}
           </b>
+          <ResultGraph />
           <div id="result-button-wrapper">
-            <div>
-              <button type="button" onClick={() => navigate("/main")}>
-                🖼️ 이미지로 저장하기
-              </button>
-              <button type="button" onClick={() => navigate("/main")}>
-                🙋‍♀️ 친구에게 공유하기
-              </button>
-            </div>
             <button type="button" onClick={() => navigate("/main")}>
               👈 다시 그리러 가기
             </button>
+            <div>
+              <button type="button" onClick={() => navigate("/main")}>
+                🖼️ 저장
+              </button>
+              <button type="button" onClick={() => navigate("/main")}>
+                🙋‍♀️ 공유
+              </button>
+            </div>
           </div>
         </div>
       </div>

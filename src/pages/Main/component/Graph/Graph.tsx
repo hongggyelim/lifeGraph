@@ -11,7 +11,7 @@ const Graph = () => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    addPoint({ id: Date.now(), x, y, title: "" }); // 클릭한 좌표 추가가
+    addPoint({ id: Date.now(), x, y, title: "" }); // 클릭한 좌표 추가
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {

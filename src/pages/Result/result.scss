@@ -4,21 +4,34 @@
   font-size: 20px;
 }
 #result-button-wrapper {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   gap: 20px;
+  justify-content: space-between;
   button {
     background-color: $primary-color-300;
     color: white;
     font-size: 18px;
     height: 50px;
-    width: 200px;
     border-radius: 20px;
-    padding: 8px;
+    padding: 12px;
   }
   div {
     display: flex;
     gap: 20px;
+  }
+}
+
+.result-graph-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .result-graph {
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    height: 40dvw;
   }
 }

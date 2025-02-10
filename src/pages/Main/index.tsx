@@ -11,7 +11,7 @@ const MainPage = () => {
     birthYear: 1990,
   });
   const { name, birthYear } = info;
-  const { resetPoints } = useGraphStore();
+  const { points, resetPoints } = useGraphStore();
   const navigate = useNavigate();
 
   // 페이지 로드 시 로컬 데이터 가져오기
@@ -25,6 +25,14 @@ const MainPage = () => {
   const handleClickReset = () => {
     const deleteConfirm = window.confirm("지금까지 입력한 데이터를 삭제하시겠습니까?");
     if (deleteConfirm) resetPoints();
+  };
+
+  const handleClickGetResult = () => {
+    if (points.length < 2) {
+      alert("두 개 이상 데이터를 입력해주세요");
+    } else {
+      navigate("/result");
+    }
   };
 
   return (
@@ -41,7 +49,7 @@ const MainPage = () => {
             <button type="button" id="reset-button" onClick={handleClickReset}>
               reset
             </button>
-            <button type="button" onClick={() => navigate("/result")}>
+            <button type="button" onClick={handleClickGetResult}>
               그래프 생성하기
             </button>
           </div>

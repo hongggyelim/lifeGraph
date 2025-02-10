@@ -5,7 +5,7 @@ interface PointProp {
   x: number;
   y: number;
   title: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 const Point = forwardRef<HTMLInputElement, PointProp>(({ x, y, title, onChange }: PointProp, ref) => {
   return (
