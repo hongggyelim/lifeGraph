@@ -4,14 +4,15 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  div {
+  overflow: hidden;
+  .graph {
     background-color: rgba(255, 255, 255, 0.6);
     width: 100%;
-    height: 30dvw;
+    height: 20dvw;
     border-left: 1px solid;
     border-color: gray;
   }
-  .graph-upper {
+  #graph-upper {
     border-bottom: 1px solid;
     border-color: gray;
   }

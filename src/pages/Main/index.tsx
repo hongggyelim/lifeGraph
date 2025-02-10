@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { InfoType } from "../../types/userInfoType";
 import "./main.scss";
-import Graph from "./component/Graph";
+import Graph from "./component/Graph/Graph";
 
 const MainPage = () => {
   const [info, setInfo] = useState<InfoType>({
