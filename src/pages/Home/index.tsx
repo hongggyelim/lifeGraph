@@ -52,30 +52,32 @@ const Home = () => {
   };
 
   return (
-    <main className="main">
-      <p>당신의 인생을 그려보세요</p>
-      <form id="form" onSubmit={handleSubmitInfo}>
-        <div>
-          <InfoInput
-            type="text"
-            name="name"
-            onChange={handleChangeInfo}
-            onKeyDowm={handleKeyDown}
-            value={info.name}
-            ref={nameRef}
-          />
-          <InfoInput
-            type="number"
-            name="birthYear"
-            onChange={handleChangeInfo}
-            onKeyDowm={handleKeyDown}
-            value={info.birthYear}
-            ref={birthYearRef}
-          />
-        </div>
-        <span>* 입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다</span>
-        <button type="submit">시작하기</button>
-      </form>
+    <main>
+      <div className="home-div">
+        <h3>당신의 인생을 그려보세요</h3>
+        <form className="border" onSubmit={handleSubmitInfo}>
+          <div>
+            <InfoInput
+              type="text"
+              name="name"
+              onChange={handleChangeInfo}
+              onKeyDowm={handleKeyDown}
+              value={info.name}
+              ref={nameRef}
+            />
+            <InfoInput
+              type="number"
+              name="birthYear"
+              onChange={handleChangeInfo}
+              onKeyDowm={handleKeyDown}
+              value={info.birthYear}
+              ref={birthYearRef}
+            />
+          </div>
+          <span>* 입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다</span>
+          <button type="submit">시작하기</button>
+        </form>
+      </div>
     </main>
   );
 };
