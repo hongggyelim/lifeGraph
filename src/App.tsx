@@ -10,9 +10,9 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/main" Component={MainPage} />
-        <Route path="/result" Component={ResultPage} />
+        <Route path="/" element={<Home />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/result" element={<ResultPage />} />
       </Routes>
     </Router>
   );
