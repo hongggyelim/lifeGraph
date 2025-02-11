@@ -1,7 +1,7 @@
 import { ChangeEvent, MouseEvent, useEffect, useRef } from "react";
-import "./graph.scss";
 import Point from "../Point/Point";
 import { useGraphStore } from "../../../../store/useGraphStore";
+import GraphContainer from "./GraphContainer";
 
 const Graph = () => {
   const { points, addPoint, setTitle } = useGraphStore();
@@ -23,7 +23,7 @@ const Graph = () => {
   }, [points]);
 
   return (
-    <div className="graph-container" onClick={handleClick}>
+    <GraphContainer onClick={handleClick}>
       {points.map((point) => (
         <Point
           key={point.id}
@@ -34,8 +34,7 @@ const Graph = () => {
           ref={inputRef}
         />
       ))}
-      <hr className="graph-devider" />
-    </div>
+    </GraphContainer>
   );
 };
 
