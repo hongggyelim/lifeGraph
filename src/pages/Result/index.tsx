@@ -5,7 +5,6 @@ import "./result.scss";
 import ResultGraph from "./Graph/ResultGraph";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
-import { LuCopy } from "react-icons/lu";
 
 const ResultPage = () => {
   const [info, setInfo] = useState<InfoType>({
