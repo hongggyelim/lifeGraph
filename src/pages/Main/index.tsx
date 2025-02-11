@@ -10,7 +10,7 @@ const MainPage = () => {
     name: "유저",
     birthYear: 1990,
   });
-  const { name, birthYear } = info;
+  const { name } = info;
   const { points, resetPoints } = useGraphStore();
   const navigate = useNavigate();
 

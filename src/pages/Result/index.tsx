@@ -11,7 +11,7 @@ const ResultPage = () => {
     name: "유저",
     birthYear: 1990,
   });
-  const { name, birthYear } = info;
+  const { name } = info;
   const navigate = useNavigate();
 
   // 페이지 로드 시 로컬 데이터 가져오기
