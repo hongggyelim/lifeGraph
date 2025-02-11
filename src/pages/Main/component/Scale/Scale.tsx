@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { InfoType } from "../../../../types/userInfoType";
 import "./scale.scss";
+import { useScaleStore } from "../../../../store/useScaleStore";
 
 // { scale = 5, mode = "age" }: { scale: number; mode: "age" | "year" }
 const Scale = () => {
@@ -9,9 +10,7 @@ const Scale = () => {
     birthYear: 1990,
   });
   const { birthYear } = info;
-
-  let mode = "year";
-  let scale = 5;
+  const { mode, scale } = useScaleStore();
 
   // 페이지 로드 시 로컬 데이터 가져오기
   useEffect(() => {

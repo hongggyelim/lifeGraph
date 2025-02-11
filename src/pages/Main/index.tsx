@@ -4,6 +4,7 @@ import "./main.scss";
 import Graph from "./component/Graph/Graph";
 import { useGraphStore } from "../../store/useGraphStore";
 import { useNavigate } from "react-router-dom";
+import ScaleController from "./component/Graph/ScaleController/ScaleController";
 
 const MainPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -43,6 +44,7 @@ const MainPage = () => {
           <p>
             <span>{name}님이 가장 행복했던 기억은 언제인가요?</span>
             <span>기억에 남는 순간을 점수로 기록해보세요</span>
+            <ScaleController />
           </p>
           {points.length === 0 && <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>}
           <Graph />

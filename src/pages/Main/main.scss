@@ -8,8 +8,10 @@
 
   p {
     display: flex;
+    position: relative;
+    width: 100%;
     flex-direction: column;
-    padding: 20px 0;
+    text-align: center;
   }
 
   #guide {
