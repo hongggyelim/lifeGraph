@@ -4,17 +4,24 @@ import "./scaleController.scss";
 
 const ScaleController = () => {
   // scale 기준 선택
-  const { mode, scale, toggleMode, setScale } = useScaleStore();
+  const { toggleMode, setScale, scale } = useScaleStore();
 
   const handleChangeMode = (e: ChangeEvent) => {
     e.stopPropagation();
     toggleMode();
   };
+
+  const handleChangeScale = (e: ChangeEvent<HTMLInputElement>) => {
+    setScale(Number(e.target.value));
+  };
   return (
-    <select className="scale-controller" onChange={handleChangeMode}>
-      <option value="age">나이</option>
-      <option value="year">년도</option>
-    </select>
+    <div className="controller-wrapper">
+      <select className="controller" onChange={handleChangeMode}>
+        <option value="age">나이</option>
+        <option value="year">년도</option>
+      </select>
+      <input type="number" value={scale} className="controller" onChange={handleChangeScale} />
+    </div>
   );
 };
 

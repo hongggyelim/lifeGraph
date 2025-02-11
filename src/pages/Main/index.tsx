@@ -41,7 +41,7 @@ const MainPage = () => {
       <div className="main-div">
         <h3>{name}님의 인생 그래프 그리기</h3>
         <div className="border">
-          <p>
+          <p className="description">
             <span>{name}님이 가장 행복했던 기억은 언제인가요?</span>
             <span>기억에 남는 순간을 점수로 기록해보세요</span>
             <ScaleController />
