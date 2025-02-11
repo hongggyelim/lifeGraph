@@ -47,8 +47,8 @@ const ResultGraph = () => {
   const pathData = generatePath(data);
 
   return (
-    <div className="result-graph-container">
-      <svg className="result-graph" width="100%" height="100%">
+    <div className="graph-container">
+      <svg width="100%" height="100%">
         <path d={pathData} fill="transparent" stroke="black" strokeWidth="2" />
       </svg>
       {points.map((point) => (
