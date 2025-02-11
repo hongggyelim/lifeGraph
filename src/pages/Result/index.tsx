@@ -59,14 +59,14 @@ const ResultPage = () => {
           </b>
           <ResultGraph />
           <div id="result-button-wrapper">
-            <button type="button" onClick={() => navigate("/main")}>
+            <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
               👈 다시 그리러 가기
             </button>
             <div>
-              <button type="button" onClick={handleDownload}>
+              <button type="button" onClick={handleDownload} data-html2canvas-ignore>
                 🖼️ 저장
               </button>
-              <button type="button" onClick={() => navigate("/main")}>
+              <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
                 🙋‍♀️ 공유
               </button>
             </div>

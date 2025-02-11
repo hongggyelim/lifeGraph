@@ -26,7 +26,7 @@
 }
 
 body {
-  background-color: $primary-color-100; /* primary 색상을 배경색으로 사용 */
+  background-color: $primary-color-100;
 }
 
 main {
@@ -45,6 +45,7 @@ main {
     position: relative;
     border: 2px solid;
     border-color: $primary-color-200;
+    background-color: $primary-color-100;
     border-radius: 12px;
     padding: 20px;
     width: 80%;
