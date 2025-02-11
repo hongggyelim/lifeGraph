@@ -44,6 +44,7 @@ const MainPage = () => {
             <span>{name}님이 가장 행복했던 기억은 언제인가요?</span>
             <span>기억에 남는 순간을 점수로 기록해보세요</span>
           </p>
+          {points.length === 0 && <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>}
           <Graph />
           <div id="button-wrapper">
             <button type="button" id="reset-button" onClick={handleClickReset}>
