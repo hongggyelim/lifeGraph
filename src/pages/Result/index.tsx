@@ -5,6 +5,7 @@ import "./result.scss";
 import ResultGraph from "./Graph/ResultGraph";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
+import { LuCopy } from "react-icons/lu";
 
 const ResultPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -33,20 +34,32 @@ const ResultPage = () => {
     8: "다채로운 삶🎨",
   };
 
-  //이미지 저장
   const imageRef = useRef<HTMLDivElement>(null);
-  const handleDownload = async () => {
+
+  const handleImageAction = async (action: "copy" | "save") => {
     const image = imageRef.current;
     if (!image) return;
+
     try {
       const canvas = await html2canvas(image, { scale: 2 });
-      canvas.toBlob((blob) => {
-        if (blob) {
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+
+        if (action === "copy") {
+          //클립보드 복사
+          await navigator.clipboard.write([
+            new ClipboardItem({
+              "image/png": blob,
+            }),
+          ]);
+          alert("이미지가 클립보드에 저장되었습니다.");
+        } else if (action === "save") {
+          // 이미지 다운로드
           saveAs(blob, "life-graph.png");
         }
       });
     } catch (err) {
-      console.log("이미지 저장 중 에러 발생", err);
+      console.log(`이미지 ${action === "copy" ? "클립보드 복사" : "다운로드"} 중 에러 발생`, err);
     }
   };
   return (
@@ -63,12 +76,15 @@ const ResultPage = () => {
               👈 다시 그리러 가기
             </button>
             <div>
-              <button type="button" onClick={handleDownload} data-html2canvas-ignore>
+              <button type="button" onClick={() => handleImageAction("save")} data-html2canvas-ignore>
                 🖼️ 저장
               </button>
-              <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
-                🙋‍♀️ 공유
+              <button type="button" onClick={() => handleImageAction("copy")} data-html2canvas-ignore>
+                📋 복사
               </button>
+              {/* <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
+                🙋‍♀️ 공유
+              </button> */}
             </div>
           </div>
         </div>
