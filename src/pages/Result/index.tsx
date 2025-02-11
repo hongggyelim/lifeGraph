@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { InfoType } from "../../types/userInfoType";
 import "./result.scss";
 import ResultGraph from "./Graph/ResultGraph";
+import html2canvas from "html2canvas";
+import saveAs from "file-saver";
 
 const ResultPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -31,11 +33,27 @@ const ResultPage = () => {
     8: "다채로운 삶🎨",
   };
 
+  //이미지 저장
+  const imageRef = useRef<HTMLDivElement>(null);
+  const handleDownload = async () => {
+    const image = imageRef.current;
+    if (!image) return;
+    try {
+      const canvas = await html2canvas(image, { scale: 2 });
+      canvas.toBlob((blob) => {
+        if (blob) {
+          saveAs(blob, "life-graph.png");
+        }
+      });
+    } catch (err) {
+      console.log("이미지 저장 중 에러 발생", err);
+    }
+  };
   return (
     <main>
       <div className="main-div">
         <h3>{name}님의 인생 그래프</h3>
-        <div className="border">
+        <div className="border" ref={imageRef}>
           <b className="result-title">
             {name}님의 인생은 {type[1]}
           </b>
@@ -45,7 +63,7 @@ const ResultPage = () => {
               👈 다시 그리러 가기
             </button>
             <div>
-              <button type="button" onClick={() => navigate("/main")}>
+              <button type="button" onClick={handleDownload}>
                 🖼️ 저장
               </button>
               <button type="button" onClick={() => navigate("/main")}>

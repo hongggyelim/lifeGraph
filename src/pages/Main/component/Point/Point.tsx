@@ -17,16 +17,13 @@ const Point = forwardRef<HTMLInputElement, PointProp>(({ x, y, title, onChange }
       }}
     >
       <input
-        style={{
-          top: `${y}px`,
-          left: `${x}px`,
-        }}
         className="point-input"
         type="text"
         value={title}
         ref={ref}
         onChange={onChange}
         onClick={(e) => e.stopPropagation()}
+        readOnly={!onChange && true}
       />
     </div>
   );
