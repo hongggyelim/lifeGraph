@@ -19,13 +19,8 @@ const Graph = () => {
 
     const newId = index + 1;
     setIndex(newId); // id 순차적으로 증가
-    addPoint({ id: index, x, y, title: "" }); // 클릭한 좌표 추가
+    addPoint({ id: index, x, y, title: "📍" }); // 클릭한 좌표 추가
     // setActivePointId(newId); // 추가한 점을 active로 설정, picker 열기
-
-    // 바로 이전 점에 title 없으면
-    if (points.length > 0 && points[points.length - 1].title === "") {
-      setTitle(points[points.length - 1].id, "📍");
-    }
   };
 
   // 생성된 점에 focus

@@ -20,8 +20,8 @@ const Point = forwardRef<HTMLInputElement, PointProp>(({ id, x, y, title, onChan
     <div
       className="point"
       style={{
-        top: `${y}px`,
-        left: `${x}px`,
+        top: `${y - 10}px`,
+        left: `${x - 10}px`,
       }}
     >
       <input
