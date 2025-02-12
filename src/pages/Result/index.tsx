@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./result.scss";
 import ResultGraph from "./Graph/ResultGraph";
@@ -53,7 +53,7 @@ const ResultPage = () => {
   return (
     <main>
       <div className="main-div">
-        <h3>{name}님의 인생 그래프</h3>
+        {/* <h3>{name}님의 인생 그래프</h3> */}
         <div className="border" ref={imageRef}>
           <b className="result-title">
             {name}님의 인생은 {resultType}
@@ -61,13 +61,13 @@ const ResultPage = () => {
           <ResultGraph />
           <div id="result-button-wrapper">
             <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
-              👈 다시 그리러 가기
+              👈 뒤로 가기
             </button>
             <div>
               <button type="button" onClick={() => handleImageAction("save")} data-html2canvas-ignore>
                 🖼️ 저장
               </button>
-              <button type="button" onClick={() => handleImageAction("copy")} data-html2canvas-ignore>
+              <button type="button" id="copy-button" onClick={() => handleImageAction("copy")} data-html2canvas-ignore>
                 📋 복사
               </button>
               {/* <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>

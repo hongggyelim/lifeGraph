@@ -2,6 +2,9 @@
 .result-title {
   font-weight: 600;
   font-size: 2rem;
+  @media (max-width: $mobile) {
+    font-size: 1.6rem;
+  }
 }
 #result-button-wrapper {
   width: 100%;
@@ -15,6 +18,10 @@
     height: 50px;
     border-radius: 20px;
     padding: 12px;
+    @media (max-width: $mobile) {
+      padding: 8px;
+      font-size: 1.4rem;
+    }
   }
   div {
     display: flex;
