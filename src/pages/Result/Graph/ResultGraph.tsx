@@ -19,7 +19,7 @@ const ResultGraph = () => {
     <GraphContainer>
       <Path sortedData={data} />
       {points.map((point) => (
-        <Point id={point.id} x={point.x} y={point.y} title={point.title} />
+        <Point key={point.id} id={point.id} x={point.x} y={point.y} title={point.title} />
       ))}
     </GraphContainer>
   );

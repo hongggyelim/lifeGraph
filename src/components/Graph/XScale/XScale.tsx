@@ -1,8 +1,8 @@
-import "./scale.scss";
-import useInfo from "../../../../hooks/useInfo";
+import "./xscale.scss";
+import useInfo from "../../../hooks/useInfo";
 
 // x축 눈금
-const Scale = () => {
+const XScale = () => {
   const { xAxis } = useInfo();
 
   return (
@@ -18,4 +18,4 @@ const Scale = () => {
   );
 };
 
-export default Scale;
+export default XScale;

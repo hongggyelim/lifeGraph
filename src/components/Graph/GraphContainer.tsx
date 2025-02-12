@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
 import "./graphContainer.scss";
-import Scale from "../../pages/Main/component/Scale/Scale";
+import XScale from "./XScale/XScale";
+import YScale from "./YScale/YScale";
 
 const GraphContainer = ({
   children,
@@ -13,8 +14,9 @@ const GraphContainer = ({
     <div className="graph-container" onClick={onClick}>
       {children}
       <div className="graph-devider">
-        <Scale />
+        <XScale />
       </div>
+      <YScale />
     </div>
   );
 };

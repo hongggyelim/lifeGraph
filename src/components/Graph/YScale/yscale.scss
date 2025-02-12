@@ -1,0 +1,13 @@
+.y-axis {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: gray;
+
+  .hidden {
+    opacity: 0;
+  }
+}
