@@ -41,11 +41,11 @@ const MainPage = () => {
       <div className="main-div">
         <h3>{name}님의 인생 그래프 그리기</h3>
         <div className="border">
-          <p className="description">
-            <span>{name}님이 가장 행복했던 기억은 언제인가요?</span>
-            <span>기억에 남는 순간을 점수로 기록해보세요</span>
+          <span className="description">
+            <p>{name}님이 가장 행복했던 기억은 언제인가요?</p>
+            <p>기억에 남는 순간을 점수로 기록해보세요</p>
             <ScaleController />
-          </p>
+          </span>
           {points.length === 0 && <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>}
           <Graph />
           <div id="button-wrapper">

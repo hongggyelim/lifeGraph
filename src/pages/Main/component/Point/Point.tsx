@@ -1,13 +1,21 @@
-import { ChangeEvent, forwardRef } from "react";
+import { ChangeEvent, forwardRef, MouseEvent } from "react";
 import "./point.scss";
 
 interface PointProp {
+  id: number;
   x: number;
   y: number;
   title: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onDelete?: (id: number) => void;
 }
-const Point = forwardRef<HTMLInputElement, PointProp>(({ x, y, title, onChange }: PointProp, ref) => {
+const Point = forwardRef<HTMLInputElement, PointProp>(({ id, x, y, title, onChange, onDelete }: PointProp, ref) => {
+  const handleDelete = (e: MouseEvent) => {
+    if (onDelete) {
+      e.stopPropagation();
+      onDelete(id);
+    }
+  };
   return (
     <div
       className="point"
@@ -25,6 +33,11 @@ const Point = forwardRef<HTMLInputElement, PointProp>(({ x, y, title, onChange }
         onClick={(e) => e.stopPropagation()}
         readOnly={!onChange && true}
       />
+      {onDelete && (
+        <button type="button" onClick={handleDelete}>
+          X
+        </button>
+      )}
     </div>
   );
 });

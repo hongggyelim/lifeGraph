@@ -1,15 +1,33 @@
 .point {
   position: absolute;
-  width: 4px !important;
-  height: 4px !important;
+  width: 1px !important;
+  height: 1px !important;
   border-radius: 50%;
   display: flex;
-  flex-direction: column-reverse;
+  align-items: center;
 
   .point-input {
-    width: 60px;
+    width: 50px;
     height: 24px;
-    padding: 4px;
-    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    border-radius: 50%;
+  }
+  button {
+    display: none;
+    background-color: gray;
+    color: white;
+    border-radius: 50%;
+    padding: 0 8px;
+    width: 24px;
+    height: 24px;
+    &:hover {
+      display: block;
+    }
+  }
+  // .point에 hover했을때
+  &:hover {
+    button {
+      display: block;
+    }
   }
 }

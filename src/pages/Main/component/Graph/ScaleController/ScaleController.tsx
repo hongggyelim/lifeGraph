@@ -20,7 +20,7 @@ const ScaleController = () => {
         <option value="age">나이</option>
         <option value="year">년도</option>
       </select>
-      <input type="number" value={scale} className="controller" onChange={handleChangeScale} />
+      <input min={2} type="number" value={scale} className="controller" onChange={handleChangeScale} />
     </div>
   );
 };
