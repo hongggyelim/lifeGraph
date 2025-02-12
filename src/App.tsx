@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import MainPage from "./pages/Main";
 import ResultPage from "./pages/Result";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/result" element={<ResultPage />} />
+        <Route path="*" element={<NotFound />} /> {/* 404 페이지 */}
       </Routes>
     </Router>
   );
