@@ -1,7 +1,6 @@
 import { MouseEvent } from "react";
-import Scale from "../Scale/Scale";
-import "../Scale/scale.scss";
 import "./graphContainer.scss";
+import Scale from "../../pages/Main/component/Scale/Scale";
 
 const GraphContainer = ({
   children,

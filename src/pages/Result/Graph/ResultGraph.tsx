@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGraphStore } from "../../../store/useGraphStore";
 import Point from "../../Main/component/Point/Point";
 import Path from "./Path";
-import GraphContainer from "../../Main/component/Graph/GraphContainer";
+import GraphContainer from "../../../components/Graph/GraphContainer";
 
 const ResultGraph = () => {
   const { points } = useGraphStore();

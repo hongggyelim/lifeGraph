@@ -6,7 +6,6 @@
   scrollbar-width: thin; /* Firefox용 */
   scrollbar-color: $primary-color-300 #f1f1f1; /* Firefox용 */
 }
-
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 8px;
@@ -29,11 +28,12 @@ body {
   background-color: $primary-color-100;
 }
 
+// main 레이아웃
 main {
   max-width: 900px;
   margin: 20px auto;
   h3 {
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 600;
     background: linear-gradient(to right, $secondary-color-200, $primary-color-200);
     width: 80%;

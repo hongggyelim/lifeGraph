@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import { useScaleStore } from "../../../../../store/useScaleStore";
+import { useScaleStore } from "../../../../store/useScaleStore";
 import "./scaleController.scss";
 
 const ScaleController = () => {

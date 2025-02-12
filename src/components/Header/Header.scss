@@ -1,0 +1,14 @@
+@import "/src/variables.scss";
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  h1,
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary-color-300;
+  }
+}

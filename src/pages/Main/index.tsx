@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { InfoType } from "../../types/userInfoType";
 import "./main.scss";
-import Graph from "./component/Graph/Graph";
+import Graph from "../../components/Graph/Graph";
 import { useGraphStore } from "../../store/useGraphStore";
 import { useNavigate } from "react-router-dom";
-import ScaleController from "./component/Graph/ScaleController/ScaleController";
+import ScaleController from "./component/ScaleController/ScaleController";
 
 const MainPage = () => {
   const [info, setInfo] = useState<InfoType>({
@@ -50,7 +50,7 @@ const MainPage = () => {
           <Graph />
           <div id="button-wrapper">
             <button type="button" id="reset-button" onClick={handleClickReset}>
-              reset
+              Reset
             </button>
             <button type="button" onClick={handleClickGetResult}>
               그래프 생성하기

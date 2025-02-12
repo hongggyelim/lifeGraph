@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState<InfoType>({
     name: "",
-    birthYear: 1900,
+    birthYear: 1990,
   });
 
   const nameRef = useRef<HTMLInputElement>(null);

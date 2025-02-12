@@ -1,6 +1,6 @@
 import { ChangeEvent, MouseEvent as ReactMouseEvent, useEffect, useRef, useState } from "react";
-import Point from "../Point/Point";
-import { useGraphStore } from "../../../../store/useGraphStore";
+import Point from "../../pages/Main/component/Point/Point";
+import { useGraphStore } from "../../store/useGraphStore";
 import GraphContainer from "./GraphContainer";
 // import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 // import { MouseDownEvent } from "emoji-picker-react/dist/config/config";

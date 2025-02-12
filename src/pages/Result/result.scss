@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 .result-title {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 2rem;
 }
 #result-button-wrapper {
   width: 100%;
@@ -11,7 +11,7 @@
   button {
     background-color: $primary-color-300;
     color: white;
-    font-size: 18px;
+    font-size: 1.8rem;
     height: 50px;
     border-radius: 20px;
     padding: 12px;
