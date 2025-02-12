@@ -1,27 +1,15 @@
-import { useEffect, useState } from "react";
-import { InfoType } from "../../types/userInfoType";
 import "./main.scss";
 import Graph from "../../components/Graph/Graph";
 import { useGraphStore } from "../../store/useGraphStore";
 import { useNavigate } from "react-router-dom";
 import ScaleController from "./component/ScaleController/ScaleController";
+import useInfo from "../../hooks/useInfo";
 
 const MainPage = () => {
-  const [info, setInfo] = useState<InfoType>({
-    name: "유저",
-    birthYear: 1990,
-  });
-  const { name } = info;
-  const { points, resetPoints } = useGraphStore();
   const navigate = useNavigate();
 
-  // 페이지 로드 시 로컬 데이터 가져오기
-  useEffect(() => {
-    const storedInfo = window.localStorage.getItem("info");
-    if (storedInfo) {
-      setInfo(JSON.parse(storedInfo));
-    }
-  }, []);
+  const { points, resetPoints } = useGraphStore();
+  const { name } = useInfo();
 
   const handleClickReset = () => {
     const deleteConfirm = window.confirm("지금까지 입력한 데이터를 삭제하시겠습니까?");
