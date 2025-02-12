@@ -14,7 +14,7 @@ const useMovePointByWidth = () => {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
-    const debounceResize = debounce(handleResize, 200);
+    const debounceResize = debounce(handleResize, 200); // ✅ 200ms 디바운스 적용
 
     window.addEventListener("resize", debounceResize);
 
