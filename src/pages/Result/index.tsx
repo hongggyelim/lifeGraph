@@ -74,11 +74,11 @@ const ResultPage = () => {
             <div>
               <button
                 type="button"
-                onClick={() =>
-                  getImage().then((blob) => {
-                    if (blob) handleSaveImage(blob);
-                  })
-                }
+                // blob 타입을 파라미터로 전하기 위해 getImage 비동기로 실행 후 리턴값 반환
+                onClick={async () => {
+                  const blob = await getImage();
+                  if (blob) handleSaveImage(blob);
+                }}
                 data-html2canvas-ignore
               >
                 🖼️ 저장
