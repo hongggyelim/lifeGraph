@@ -24,20 +24,24 @@ const ResultPage = () => {
 
   const imageRef = useRef<HTMLDivElement>(null);
 
-  const getImage = async () => {
+  const getImage = async (): Promise<Blob | null> => {
     const image = imageRef.current;
-    if (!image) return;
+    if (!image) return null;
     try {
       const canvas = await html2canvas(image, { scale: 2 });
-      canvas.toBlob(async (blob) => {
-        if (!blob) {
-          alert("이미지 파일이 생성되지 않았습니다.");
-          return;
-        }
-        return blob;
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            alert("이미지 파일이 생성되지 않았습니다.");
+            resolve(null);
+          } else {
+            resolve(blob);
+          }
+        }, "image/png");
       });
     } catch (err) {
       console.log(`이미지 생성성 중 에러 발생`, err);
+      return null;
     }
   };
 
@@ -68,10 +72,27 @@ const ResultPage = () => {
               👈 뒤로 가기
             </button>
             <div>
-              <button type="button" onClick={() => handleSaveImage} data-html2canvas-ignore>
+              <button
+                type="button"
+                onClick={() =>
+                  getImage().then((blob) => {
+                    if (blob) handleSaveImage(blob);
+                  })
+                }
+                data-html2canvas-ignore
+              >
                 🖼️ 저장
               </button>
-              <button type="button" id="copy-button" onClick={() => handleCopyImage} data-html2canvas-ignore>
+              <button
+                type="button"
+                id="copy-button"
+                onClick={() => {
+                  getImage().then((blob) => {
+                    if (blob) handleCopyImage(blob);
+                  });
+                }}
+                data-html2canvas-ignore
+              >
                 📋 복사
               </button>
               {/* <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
