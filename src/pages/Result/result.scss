@@ -22,10 +22,14 @@
     border-radius: 20px;
     padding: 12px;
     cursor: pointer;
-    @media (max-width: $mobile) {
-      padding: 8px;
+
+    @media (max-width: $tablet) {
       font-size: 1.4rem;
+      width: 100%;
     }
+  }
+  #back-button {
+    background-color: $primary-color-200;
   }
   div {
     display: flex;
@@ -33,6 +37,9 @@
     @media (max-width: $mobile) {
       flex-direction: column;
       gap: 8px;
+    }
+    @media (max-width: $tablet) {
+      justify-content: space-between;
     }
   }
 }
