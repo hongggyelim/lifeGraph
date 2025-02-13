@@ -45,17 +45,26 @@ const ResultPage = () => {
     }
   };
 
-  const handleSaveImage = (blob: Blob) => {
-    saveAs(blob, "life-graph.png");
+  const handleSaveImage = async () => {
+    const blob = await getImage();
+    if (blob) saveAs(blob, "life-graph.png");
   };
 
-  const handleCopyImage = (blob: Blob) => {
-    navigator.clipboard.write([
-      new ClipboardItem({
-        "image/png": blob,
-      }),
-    ]);
-    alert("이미지가 클립보드에 저장되었습니다.");
+  const handleCopyToClipboard = async () => {
+    const blob = await getImage();
+    if (!blob) return;
+
+    const clipboardItem = new ClipboardItem({
+      "image/png": new Promise((resolve) => resolve(blob)),
+    });
+
+    try {
+      await navigator.clipboard.write([clipboardItem]);
+      alert("이미지가 클립보드에 저장되었습니다.");
+    } catch (err) {
+      console.error("클립보드 복사 실패:", err);
+      alert("클립보드 복사에 실패했습니다.");
+    }
   };
 
   return (
@@ -72,32 +81,12 @@ const ResultPage = () => {
               👈 뒤로 가기
             </button>
             <div>
-              <button
-                type="button"
-                // blob 타입을 파라미터로 전하기 위해 getImage 비동기로 실행 후 리턴값 반환
-                onClick={async () => {
-                  const blob = await getImage();
-                  if (blob) handleSaveImage(blob);
-                }}
-                data-html2canvas-ignore
-              >
+              <button type="button" onClick={handleSaveImage} data-html2canvas-ignore>
                 🖼️ 저장
               </button>
-              <button
-                type="button"
-                id="copy-button"
-                onClick={() => {
-                  getImage().then((blob) => {
-                    if (blob) handleCopyImage(blob);
-                  });
-                }}
-                data-html2canvas-ignore
-              >
+              <button type="button" id="copy-button" onClick={handleCopyToClipboard} data-html2canvas-ignore>
                 📋 복사
               </button>
-              {/* <button type="button" onClick={() => navigate("/main")} data-html2canvas-ignore>
-                🙋‍♀️ 공유
-              </button> */}
             </div>
           </div>
         </div>
