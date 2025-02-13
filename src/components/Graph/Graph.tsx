@@ -6,7 +6,6 @@ import { PointData } from "../../types/pointType";
 import useMovePointByWidth from "../../hooks/useMovePointByWidth";
 
 const Graph = () => {
-  const [index, setIndex] = useState(0);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const { addPoint, setTitle, deletePoint } = useGraphStore();
@@ -17,15 +16,12 @@ const Graph = () => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const newId = index + 1;
-    setIndex(newId); // id 순차적으로 증가
-    const newPoint: PointData = { id: index, x, y, title: "📍" };
+    const newPoint: PointData = { id: Date.now(), x, y, title: "📍" };
     addPoint(newPoint); // 클릭한 좌표 추가
   };
   const handleFocus = (index: number) => {
     if (inputRefs.current[index]) {
       inputRefs.current[index]?.focus();
-      console.log("index", index);
     }
   };
 
@@ -33,14 +29,6 @@ const Graph = () => {
   const handleInputClick = (index: number) => {
     handleFocus(index);
   };
-
-  // 생성된 점에 focus
-  useEffect(() => {
-    if (points.length > 0) {
-      handleFocus(points.length - 1);
-    }
-    console.log("points.length", points.length);
-  }, [points]);
 
   // 텍스트 입력시
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>, id: number) => {
