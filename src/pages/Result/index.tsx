@@ -42,7 +42,7 @@ const ResultPage = () => {
         }, "image/png");
       });
     } catch (err) {
-      console.log(`이미지 생성성 중 에러 발생`, err);
+      console.log(`이미지 생성 중 에러 발생`, err);
       return null;
     }
   };
@@ -52,7 +52,6 @@ const ResultPage = () => {
   }, [image, resultType]);
 
   const handleSaveImage = async () => {
-    // const blob = await getImage();
     if (imageBlob) saveAs(imageBlob, "life-graph.png");
   };
 
@@ -72,21 +71,6 @@ const ResultPage = () => {
     }
   };
 
-  const handleOpenImageForCopy = async () => {
-    const blob = await getImage();
-    if (!blob) return;
-
-    const url = URL.createObjectURL(blob);
-    const newWindow = window.open(url, "_blank");
-
-    if (!newWindow) {
-      alert("팝업 차단이 활성화되어 있어 새 창을 열 수 없습니다.");
-      return;
-    }
-
-    return () => URL.revokeObjectURL(url);
-  };
-
   return (
     <main>
       <div className="main-div">
@@ -102,13 +86,10 @@ const ResultPage = () => {
             </button>
             <div>
               <button type="button" onClick={handleSaveImage} data-html2canvas-ignore>
-                🖼️ 이미지로 저장
+                🖼️ 그래프 이미지 저장
               </button>
               <button type="button" id="copy-button" onClick={handleCopyToClipboard} data-html2canvas-ignore>
-                📋 이미지로 복사
-              </button>
-              <button type="button" onClick={handleOpenImageForCopy} data-html2canvas-ignore>
-                🪟 이미지 새창에서 열기
+                📋 클립보드에 저장
               </button>
             </div>
           </div>
