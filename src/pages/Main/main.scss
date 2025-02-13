@@ -36,7 +36,12 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-
+    @media (max-width: $mobile) {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
     button {
       background-color: $primary-color-300;
       font-size: 1.6rem;
@@ -49,6 +54,7 @@
       cursor: pointer;
       @media (max-width: $mobile) {
         font-size: 1.4rem;
+        width: 100%;
       }
     }
 

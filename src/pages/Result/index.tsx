@@ -66,6 +66,20 @@ const ResultPage = () => {
       alert("클립보드 복사에 실패했습니다.");
     }
   };
+  const handleOpenImageForCopy = async () => {
+    const blob = await getImage();
+    if (!blob) return;
+
+    const url = URL.createObjectURL(blob);
+    const newWindow = window.open(url, "_blank");
+
+    if (!newWindow) {
+      alert("팝업 차단이 활성화되어 있어 새 창을 열 수 없습니다.");
+      return;
+    }
+
+    return () => URL.revokeObjectURL(url);
+  };
 
   return (
     <main>
@@ -82,10 +96,13 @@ const ResultPage = () => {
             </button>
             <div>
               <button type="button" onClick={handleSaveImage} data-html2canvas-ignore>
-                🖼️ 저장
+                🖼️ 이미지로 저장
               </button>
               <button type="button" id="copy-button" onClick={handleCopyToClipboard} data-html2canvas-ignore>
-                📋 복사
+                📋 이미지로 복사
+              </button>
+              <button type="button" onClick={handleOpenImageForCopy} data-html2canvas-ignore>
+                🪟 이미지 새창에서 열기
               </button>
             </div>
           </div>

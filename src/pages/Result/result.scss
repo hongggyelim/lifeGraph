@@ -11,6 +11,9 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
+  @media (max-width: $tablet) {
+    flex-direction: column-reverse;
+  }
   button {
     background-color: $primary-color-300;
     color: white;
@@ -27,5 +30,9 @@
   div {
     display: flex;
     gap: 20px;
+    @media (max-width: $mobile) {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 }
