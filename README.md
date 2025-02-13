@@ -1,5 +1,6 @@
 # 인생 그래프 그리기
 #### 마우스 클릭만으로 나만의 인생 그래프를 쉽게 그릴 수 있습니다. 
+#### <a href="https://life-graph.vercel.app/">🔗배포 링크</a>
 -  기술 스택 : React, TypeScript, Zustand, SCSS, html2canvas, file-saver
 
 -  프로젝트 일정 : 2025.02.06 - 02.14
