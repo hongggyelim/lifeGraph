@@ -74,7 +74,7 @@ const ResultPage = () => {
   return (
     <main>
       <div className="main-div">
-        {/* <h3>{name}님의 인생 그래프</h3> */}
+        <h3>{name}님의 인생 그래프</h3>
         <div className="border" ref={imageRef}>
           <b className="result-title">
             {name}님의 인생은 {resultType}

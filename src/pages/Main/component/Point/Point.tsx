@@ -8,39 +8,47 @@ interface PointProp {
   title: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onDelete?: (id: number) => void;
+  onClick?: (index: number) => void;
 }
-const Point = forwardRef<HTMLInputElement, PointProp>(({ id, x, y, title, onChange, onDelete }: PointProp, ref) => {
-  const handleDelete = (e: MouseEvent) => {
-    if (onDelete) {
+const Point = forwardRef<HTMLInputElement, PointProp>(
+  ({ id, x, y, title, onChange, onDelete, onClick }: PointProp, ref) => {
+    const handleDelete = (e: MouseEvent) => {
+      if (onDelete) {
+        e.stopPropagation();
+        onDelete(id);
+      }
+    };
+
+    const handleClickInput = (e: MouseEvent) => {
       e.stopPropagation();
-      onDelete(id);
-    }
-  };
-  return (
-    <div
-      className="point"
-      style={{
-        top: `${y - 10}px`,
-        left: `${x - 10}px`,
-      }}
-    >
-      <input
-        className={`point-input ${title.length > 10 ? "long" : title.length > 5 ? "mid" : ""}`}
-        type="text"
-        value={title}
-        ref={ref}
-        onChange={onChange}
-        onClick={(e) => e.stopPropagation()}
-        readOnly={!onChange && true}
-        placeholder="타이틀을 입력하세요"
-      />
-      {onDelete && (
-        <button type="button" onClick={handleDelete}>
-          X
-        </button>
-      )}
-    </div>
-  );
-});
+      if (onClick) onClick(id);
+    };
+    return (
+      <div
+        className="point"
+        style={{
+          top: `${y - 10}px`,
+          left: `${x - 10}px`,
+        }}
+      >
+        <input
+          className={`point-input ${title.length > 10 ? "long" : title.length > 5 ? "mid" : ""}`}
+          type="text"
+          value={title}
+          ref={ref}
+          onChange={onChange}
+          onClick={(e) => handleClickInput(e)}
+          readOnly={!onChange && true}
+          placeholder="타이틀을 입력하세요"
+        />
+        {onDelete && (
+          <button type="button" onClick={handleDelete}>
+            X
+          </button>
+        )}
+      </div>
+    );
+  }
+);
 
 export default Point;

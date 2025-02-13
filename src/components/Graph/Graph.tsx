@@ -25,13 +25,21 @@ const Graph = () => {
   const handleFocus = (index: number) => {
     if (inputRefs.current[index]) {
       inputRefs.current[index]?.focus();
+      console.log("index", index);
     }
   };
+
+  // 특정 input을 클릭하면 해당 필드에 포커스
+  const handleInputClick = (index: number) => {
+    handleFocus(index);
+  };
+
   // 생성된 점에 focus
   useEffect(() => {
     if (points.length > 0) {
       handleFocus(points.length - 1);
     }
+    console.log("points.length", points.length);
   }, [points]);
 
   // 텍스트 입력시
@@ -54,9 +62,10 @@ const Graph = () => {
           title={point.title} // input.value로 전달하는 값
           onChange={(e) => handleChangeTitle(e, point.id)}
           onDelete={handleDeletePoint}
+          onClick={handleInputClick}
           ref={(el) => {
             // 각 포인트에 개별적인 ref 할당
-            inputRefs.current[index] = el;
+            inputRefs.current[point.id] = el;
           }}
         />
       ))}
