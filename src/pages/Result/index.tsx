@@ -5,11 +5,12 @@ import ResultGraph from "./Graph/ResultGraph";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
 import useInfo from "../../hooks/useInfo";
+import { useGraphStore } from "../../store/useGraphStore";
 
 const ResultPage = () => {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const navigate = useNavigate();
-
+  const { points } = useGraphStore();
   const { name } = useInfo();
   const imageRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +23,7 @@ const ResultPage = () => {
     4: "조화로운 삶🌸",
     5: "안정적인 성장📈",
     6: "다채로운 삶🎨",
-    7: "대기만성, 화이팅!📣",
+    7: "우상향 가즈아!📈",
     8: "비온뒤 맑음🌤️",
   }[result];
 
@@ -49,7 +50,7 @@ const ResultPage = () => {
 
   useEffect(() => {
     if (image) getImage().then((blob) => setImageBlob(blob));
-  }, [image, resultType]);
+  }, [image]);
 
   const handleSaveImage = async () => {
     if (imageBlob) saveAs(imageBlob, "life-graph.png");
@@ -70,6 +71,10 @@ const ResultPage = () => {
       alert("클립보드 복사에 실패했습니다.");
     }
   };
+
+  useEffect(() => {
+    if (!points.length) navigate("/");
+  }, []);
 
   return (
     <main>

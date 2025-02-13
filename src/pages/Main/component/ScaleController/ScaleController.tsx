@@ -16,6 +16,7 @@ const ScaleController = () => {
   return (
     <div className="controller-wrapper">
       <div className="controller" id="mode-control">
+        기준
         <label htmlFor="age">
           <input type="checkbox" value="age" id="age" name="age" checked={mode === "age"} onChange={handleChangeMode} />
           나이
