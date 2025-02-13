@@ -47,7 +47,7 @@ const ResultPage = () => {
           alert("이미지가 클립보드에 저장되었습니다.");
         } else if (action === "save") {
           // 이미지 다운로드
-          //* 카톡 인웹 브라우저에서 저장 안됨
+          //* 카톡 인웹 브라우저에서 저장 안됨 -> 사이트 접속 시 다른 브라우저로 넘겨주기
           saveAs(blob, "life-graph.png");
         }
       });

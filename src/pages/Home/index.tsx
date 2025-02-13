@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import InfoInput from "./component/InfoInput";
 import "./home.scss";
 import { InfoType } from "../../types/userInfoType";
@@ -13,6 +13,18 @@ const Home = () => {
 
   const nameRef = useRef<HTMLInputElement>(null);
   const birthYearRef = useRef<HTMLInputElement>(null);
+
+  // 카톡 인웹 브라우저로 로딩됐을때 다른 브라우저로 열어주는 기능
+  useEffect(() => {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isKakaoInApp = userAgent.includes("kakaotalk");
+
+    // 카카오톡 인앱 브라우저일 경우에만 실행
+    if (isKakaoInApp) {
+      const targetUrl = "https://life-graph.vercel.app/";
+      window.location.replace(`kakaotalk://web/openExternal?url=${encodeURIComponent(targetUrl)}`);
+    }
+  }, []);
 
   const handleChangeInfo = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
