@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./result.scss";
 import ResultGraph from "./Graph/ResultGraph";
@@ -7,8 +7,12 @@ import saveAs from "file-saver";
 import useInfo from "../../hooks/useInfo";
 
 const ResultPage = () => {
+  const [imageBlob, setImageBlob] = useState<Blob | null>(null);
   const navigate = useNavigate();
+
   const { name } = useInfo();
+  const imageRef = useRef<HTMLDivElement>(null);
+
   let result = String(Math.floor(Math.random() * 8));
 
   const resultType = {
@@ -22,10 +26,8 @@ const ResultPage = () => {
     8: "비온뒤 맑음🌤️",
   }[result];
 
-  const imageRef = useRef<HTMLDivElement>(null);
-
+  const image = imageRef.current;
   const getImage = async (): Promise<Blob | null> => {
-    const image = imageRef.current;
     if (!image) return null;
     try {
       const canvas = await html2canvas(image, { scale: 2 });
@@ -45,27 +47,31 @@ const ResultPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (image) getImage().then((blob) => setImageBlob(blob));
+  }, [image, resultType]);
+
   const handleSaveImage = async () => {
-    const blob = await getImage();
-    if (blob) saveAs(blob, "life-graph.png");
+    // const blob = await getImage();
+    if (imageBlob) saveAs(imageBlob, "life-graph.png");
   };
 
-  const handleCopyToClipboard = async () => {
-    const blob = await getImage();
-    if (!blob) return;
-
-    const clipboardItem = new ClipboardItem({
-      "image/png": new Promise((resolve) => resolve(blob)),
-    });
+  const handleCopyToClipboard = () => {
+    if (!imageBlob) return;
 
     try {
-      await navigator.clipboard.write([clipboardItem]);
+      navigator.clipboard.write([
+        new ClipboardItem({
+          "image/png": imageBlob,
+        }),
+      ]);
       alert("이미지가 클립보드에 저장되었습니다.");
     } catch (err) {
       console.error("클립보드 복사 실패:", err);
       alert("클립보드 복사에 실패했습니다.");
     }
   };
+
   const handleOpenImageForCopy = async () => {
     const blob = await getImage();
     if (!blob) return;
