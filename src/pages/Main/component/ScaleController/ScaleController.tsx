@@ -35,6 +35,7 @@ const ScaleController = () => {
       <div className="controller" id="scale-control">
         <label>간격</label>
         <input min={2} max={10} step={1} type="range" value={scale} onChange={handleChangeScale} />
+        {scale}
       </div>
     </div>
   );
