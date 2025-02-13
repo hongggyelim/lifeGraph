@@ -44,6 +44,7 @@ const ResultPage = () => {
               "image/png": blob,
             }),
           ]);
+          if (!!navigator.clipboard?.write) alert("복사 기능이 지원되지 않는 기기입니다");
           alert("이미지가 클립보드에 저장되었습니다.");
         } else if (action === "save") {
           // 이미지 다운로드
