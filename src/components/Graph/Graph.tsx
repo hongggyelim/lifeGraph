@@ -7,7 +7,8 @@ import useMovePointByWidth from "../../hooks/useMovePointByWidth";
 
 const Graph = () => {
   const [index, setIndex] = useState(0);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
   const { addPoint, setTitle, deletePoint } = useGraphStore();
 
   const { points } = useMovePointByWidth();
@@ -21,10 +22,16 @@ const Graph = () => {
     const newPoint: PointData = { id: index, x, y, title: "📍" };
     addPoint(newPoint); // 클릭한 좌표 추가
   };
-
+  const handleFocus = (index: number) => {
+    if (inputRefs.current[index]) {
+      inputRefs.current[index]?.focus();
+    }
+  };
   // 생성된 점에 focus
   useEffect(() => {
-    inputRef?.current?.focus();
+    if (points.length > 0) {
+      handleFocus(points.length - 1);
+    }
   }, [points]);
 
   // 텍스트 입력시
@@ -47,7 +54,10 @@ const Graph = () => {
           title={point.title} // input.value로 전달하는 값
           onChange={(e) => handleChangeTitle(e, point.id)}
           onDelete={handleDeletePoint}
-          ref={inputRef}
+          ref={(el) => {
+            // 각 포인트에 개별적인 ref 할당
+            inputRefs.current[index] = el;
+          }}
         />
       ))}
     </GraphContainer>
