@@ -14,7 +14,6 @@ const Home = () => {
   const nameRef = useRef<HTMLInputElement>(null);
   const birthYearRef = useRef<HTMLInputElement>(null);
 
-  // 카톡 인웹 브라우저로 로딩됐을때 다른 브라우저로 열어주는 기능
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
     const isKakaoInApp = userAgent.includes("kakaotalk");
