@@ -4,7 +4,7 @@
 -  기술 스택 : React, TypeScript, Zustand, SCSS, html2canvas, file-saver
 -  참여 인원 : 홍예림 (FE)
 -  프로젝트 일정 : 2025.02.06 - 02.14
-<img src="https://github.com/user-attachments/assets/3f9632e5-11c7-42bd-8771-d2b1554e555f" width="1000" height="600"/>
+<img src="https://github.com/user-attachments/assets/65eb524a-e009-4481-9a69-e071d9ed85bf" width="1000" height="600"/>
 
 
 
