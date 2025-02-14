@@ -6,7 +6,7 @@ const XScale = () => {
   const { xAxis } = useInfo();
 
   return (
-    <>
+    <div className="graph-devider">
       {xAxis.map((value, index) => {
         return (
           <span className="x-unit" key={index}>
@@ -14,7 +14,7 @@ const XScale = () => {
           </span>
         );
       })}
-    </>
+    </div>
   );
 };
 

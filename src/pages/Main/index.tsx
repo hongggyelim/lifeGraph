@@ -27,17 +27,14 @@ const MainPage = () => {
   return (
     <main>
       <div className="main-div">
-        <h3>{name}님의 인생 그래프 그리기</h3>
+        <h3>{name}님,기억에 남는 순간을 기록해보세요</h3>
+        <p className="description">
+          <b>Tip ! </b>
+          핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요
+          <br />
+          🖥️ 넓은 화면을 권장합니다
+        </p>
         <div className="border">
-          <span className="description">
-            <p>{name}님이 가장 행복했던 기억은 언제인가요?</p>
-            <p>기억에 남는 순간을 점수로 기록해보세요</p>
-            <br />
-            <p>
-              Tip : 핀📍을 선택해 텍스트를 수정하거나
-              <br /> 핀📍을 삭제할 수 있어요
-            </p>
-          </span>
           <ScaleController />
           {points.length === 0 && <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>}
           <Graph />
