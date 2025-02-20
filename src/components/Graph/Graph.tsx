@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEvent as ReactMouseEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, MouseEvent as ReactMouseEvent, useRef } from "react";
 import Point from "../../pages/Main/component/Point/Point";
 import { useGraphStore } from "../../store/useGraphStore";
 import GraphContainer from "./GraphContainer";
