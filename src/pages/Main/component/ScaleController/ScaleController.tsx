@@ -1,17 +1,25 @@
 import { ChangeEvent } from "react";
 import { useScaleStore } from "../../../../store/useScaleStore";
+import { useGraphStore } from "../../../../store/useGraphStore";
 import "./scaleController.scss";
 
 const ScaleController = () => {
   // scale 기준 선택
   const { toggleMode, setScale, scale, mode } = useScaleStore();
+  const { resetPoints, points } = useGraphStore();
   const handleChangeMode = (e: ChangeEvent) => {
     e.stopPropagation();
     toggleMode();
   };
 
   const handleChangeScale = (e: ChangeEvent<HTMLInputElement>) => {
-    setScale(Number(e.target.value));
+    if (scale !== Number(e.target.value) && points.length > 0) {
+      const resetConfirm = window.confirm("간격을 수정하면 지금까지 작성한 내용이 리셋됩니다. 계속 하시겠습니까?");
+      if (resetConfirm) {
+        resetPoints();
+        setScale(Number(e.target.value));
+      }
+    }
   };
   return (
     <div className="controller-wrapper">
