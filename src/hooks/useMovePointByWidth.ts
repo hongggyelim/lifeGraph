@@ -7,8 +7,8 @@ const useMovePointByWidth = () => {
   // debounce 추가하기
   const containerRef = useRef<HTMLDivElement | null>(null); // 기준이 될 DOM 요소
 
-  const [width, setWidth] = useState(window.innerWidth);
-  const [prevWidth, setPrevWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
+  const [prevWidth, setPrevWidth] = useState(0);
   const { points, setPoints } = useGraphStore();
 
   // 특정 DOM 리사이즈 감지
