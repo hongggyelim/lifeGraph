@@ -38,7 +38,7 @@ const useMovePointByWidth = () => {
   useEffect(() => {
     // 이미 저장된 points x좌표 조정
     if (width !== prevWidth && prevWidth !== 0) {
-      const newPoints: PointData[] = points.map((point) => ({ ...point, x: point.x * (width / prevWidth) * 0.99 }));
+      const newPoints: PointData[] = points.map((point) => ({ ...point, x: point.x * (width / prevWidth) }));
       setPoints(newPoints);
     }
     setPrevWidth(width);
