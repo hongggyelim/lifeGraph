@@ -32,7 +32,12 @@ const Graph = () => {
 
   // 텍스트 입력시
   const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>, id: number) => {
-    setTitle(id, e.target.value);
+    const newTitle = e.target.value;
+    if (newTitle.length > 12) {
+      alert("10자 이내로 작성해주세요");
+    } else {
+      setTitle(id, newTitle);
+    }
   };
 
   // point 삭제 버튼

@@ -32,7 +32,7 @@ const Point = forwardRef<HTMLInputElement, PointProp>(
         }}
       >
         <input
-          className={`point-input ${title.length > 10 ? "long" : title.length > 5 ? "mid" : ""}`}
+          className={`point-input ${title.length > 5 ? "long" : ""}`}
           type="text"
           value={title}
           ref={ref}
