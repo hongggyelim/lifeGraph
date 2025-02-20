@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+footer {
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+
+  @media (max-width: $mobile) {
+    padding: 12px;
+  }
+  address {
+    display: flex;
+    gap: 4px;
+    font-style: normal;
+  }
+}
