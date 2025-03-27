@@ -38,7 +38,7 @@ const Point = forwardRef<HTMLInputElement, PointProp>(
           ref={ref}
           onChange={onChange}
           onClick={(e) => handleClickInput(e)}
-          readOnly={!onChange && true}
+          readOnly={!onChange}
         />
         {onDelete && (
           <button type="button" onClick={handleDelete}>
