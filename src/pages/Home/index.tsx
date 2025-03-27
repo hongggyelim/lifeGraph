@@ -65,8 +65,8 @@ const Home = () => {
   return (
     <main className="home-main">
       <div className="home-div">
-        <h1>인생 그래프</h1>
-        <p>당신의 인생을 그려보세요</p>
+        <h1 id="title">인생 그래프</h1>
+        <p id="subtitle">당신의 인생을 그려보세요</p>
         <form className="border" onSubmit={handleSubmitInfo}>
           <div>
             <InfoInput

@@ -6,7 +6,7 @@ const XScale = () => {
   const { xAxis } = useInfo();
 
   return (
-    <div className="graph-devider">
+    <div className="graph-divider">
       {xAxis.map((value, index) => {
         return (
           <span className="x-unit" key={index}>

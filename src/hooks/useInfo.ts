@@ -31,18 +31,19 @@ const useInfo = () => {
 
         break;
       case "year":
-        if (birthYear + scale * i <= currentYear) xAxis.push(birthYear + scale * i);
+        if (birthYear + scale * i <= currentYear)
+          xAxis.push(birthYear + scale * i);
         break;
     }
   }
   switch (mode) {
     case "age":
       if (xAxis.at(-1) !== age) xAxis.push(`${age}➡️`);
-      xAxis.push("🏋️");
+      xAxis.push("");
       break;
     case "year":
       if (xAxis.at(-1) !== currentYear) xAxis.push(`${currentYear}➡️`);
-      xAxis.push("🏋️");
+      xAxis.push("");
 
       break;
   }

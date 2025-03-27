@@ -1,14 +1,13 @@
+import useInfo from "../../hooks/useInfo";
 import "./Header.scss";
 
 const Header = () => {
+  const { name } = useInfo();
+
   return (
     <header>
-      <nav id="header">
-        <h1>
-          <a href="/">인생 그래프</a>
-        </h1>
-        <h2>Draw your Life</h2>
-      </nav>
+      <h1>인생 그래프</h1>
+      <p>{name + "님" || "당신"}의 인생을 그려보세요</p>
     </header>
   );
 };

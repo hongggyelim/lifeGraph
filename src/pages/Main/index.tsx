@@ -4,6 +4,7 @@ import { useGraphStore } from "../../store/useGraphStore";
 import { useNavigate } from "react-router-dom";
 import ScaleController from "./component/ScaleController/ScaleController";
 import useInfo from "../../hooks/useInfo";
+import { BsExclamationCircle } from "react-icons/bs";
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -29,15 +30,20 @@ const MainPage = () => {
   return (
     <main>
       <div className="main-div">
-        <p>{name}님,기억에 남는 순간을 기록해보세요</p>
-        <p className="description">
-          <b>Tip ! </b>
-          핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요
+        <h1 id="title">인생 그래프</h1>
+        <p id="subtitle">{name}님,기억에 남는 순간을 기록해보세요</p>
+        <div className="description">
+          <b className="tip">
+            <BsExclamationCircle />
+            Tip !
+          </b>
+          • 핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요
           <br />
-          🖥️ 넓은 화면을 권장합니다
-        </p>
-        <div className="border">
-          <ScaleController />
+          • 🖥️ 넓은 화면을 권장합니다
+          <br />• 그래프 생성하기를 누르고 이미지를 공유해보세요
+        </div>
+        <ScaleController />
+        <div className="main-border">
           {points.length === 0 && (
             <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>
           )}
