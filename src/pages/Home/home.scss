@@ -14,18 +14,27 @@
       font-weight: 500;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
       max-width: 600px;
       margin: 0 auto;
       padding: 12px 0;
     }
     input {
       background-color: white;
+      border: 1px solid;
+      border-color: $secondary-color-100;
       height: 40px;
       width: full;
-      padding: 20px;
+      padding: 8px 12px;
       border-radius: 8px;
       font-size: 1.6rem;
+    }
+
+    .error {
+      font-size: 1.3rem;
+      padding-left: 4px;
+      color: red;
+      height: 1.3rem;
     }
 
     button {
