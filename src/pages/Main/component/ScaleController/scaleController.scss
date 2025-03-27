@@ -2,21 +2,18 @@
 
 .controller-wrapper {
   display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
   @media (max-width: $tablet) {
     flex-direction: column;
-    gap: 8px;
   }
 }
 
 .controller {
   height: 48px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 8px;
   font-size: 1.4rem;
-  color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
