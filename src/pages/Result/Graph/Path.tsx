@@ -33,7 +33,7 @@ const Path = ({ sortedData }: { sortedData: any }) => {
   const pathData = generatePath(sortedData);
 
   return (
-    <svg width="100%" height={400}>
+    <svg width="100%" height="100%">
       <path d={pathData} fill="transparent" stroke="black" strokeWidth="2" />
     </svg>
   );
