@@ -13,13 +13,13 @@
 }
 .graph-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   width: 90%;
   min-height: 400px;
   cursor: crosshair;
   @media (min-width: $desktop) {
-    padding: 0 400px;
+    // padding: 0 400px;
   }
 }
 
