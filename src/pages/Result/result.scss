@@ -8,6 +8,7 @@
   width: 80%;
   max-width: $desktop;
   margin: 0 auto;
+  padding: 20px;
   @media (max-width: $mobile) {
     gap: 8px;
   }

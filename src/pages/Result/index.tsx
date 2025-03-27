@@ -78,9 +78,9 @@ const ResultPage = () => {
 
   return (
     <main>
-      <div className="result-div">
+      <div className="result-div" ref={imageRef}>
         <h1 id="title">인생 그래프</h1>
-        <div className="result-border" ref={imageRef}>
+        <div className="result-border">
           <b className="result-title">
             {name}님의 인생은 {resultType}
           </b>

@@ -9,6 +9,7 @@
   min-height: 400px;
   cursor: not-allowed;
   border-radius: 8px;
+  border: 1px solid $secondary-color-100;
 }
 .graph-container {
   position: relative;
@@ -17,6 +18,7 @@
   width: 90%;
   min-height: 400px;
   cursor: crosshair;
+
   @media (min-width: $desktop) {
     // padding: 0 400px;
   }

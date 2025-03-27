@@ -47,7 +47,7 @@ const Home = () => {
   };
 
   const handleSubmitInfo = (e: FormEvent) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const validationErrors = validateInput(info);
     setErrors((prev) => ({
@@ -67,7 +67,7 @@ const Home = () => {
       <div className="home-div">
         <h1 id="title">인생 그래프</h1>
         <p id="subtitle">당신의 인생을 그려보세요</p>
-        <form className="border" onSubmit={handleSubmitInfo}>
+        <form action="/main" className="border" onSubmit={handleSubmitInfo}>
           <div>
             <InfoInput
               type="text"

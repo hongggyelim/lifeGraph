@@ -12,13 +12,13 @@ const MainPage = () => {
   const { points, resetPoints } = useGraphStore();
   const { name } = useInfo();
   const handleClickBack = () => {
-    let confirm;
     if (points.length >= 1) {
-      confirm = window.confirm(
+      let confirm = window.confirm(
         "지금까지 입력한 데이터를 초기화하고 이전 페이지로 이동하시겠습니까?"
       );
+      if (confirm) navigate("/");
     }
-    if (confirm) navigate("/");
+    navigate("/");
     resetPoints();
   };
 
@@ -64,7 +64,7 @@ const MainPage = () => {
                 type="button"
                 className={`button`}
                 onClick={handleClickBack}
-                disabled={!points.length}
+                // disabled={!points.length}
               >
                 Back
               </button>
