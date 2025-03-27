@@ -50,17 +50,15 @@
     gap: 8px;
   }
   #guide {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
     position: absolute;
     top: 40%;
-    left: 1/2;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
     z-index: 30;
-    padding: 20px;
+    padding: 12px;
     color: white;
-    @media (max-width: $mobile) {
-      padding: 12px;
-    }
   }
 
   #button-wrapper {
@@ -74,38 +72,55 @@
       align-items: center;
       gap: 8px;
     }
-    button {
-      background-color: $primary-color-300;
+    .button {
       font-size: 1.6rem;
-      color: white;
-      font-weight: 600;
-      height: 50px;
-      width: 200px;
       border-radius: 12px;
-      padding: 8px;
+      padding: 12px 8px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: background-color 0.1s ease;
 
-      &:hover {
-        background-color: $primary-color-400;
-        transition: background-color 0.1s ease;
-      }
-
-      &:disabled {
-        background-color: $primary-color-200;
-        cursor: not-allowed;
-      }
       @media (max-width: $mobile) {
         font-size: 1.4rem;
         width: 100%;
       }
     }
-
-    .reset {
-      background-color: $primary-color-300;
+    .flex-row {
+      display: flex;
+      gap: 4px;
+      button {
+        border: 1px solid;
+        border-color: $secondary-color-200;
+        border-radius: 50%;
+        background-color: $background;
+        color: $secondary-color-400;
+        width: 50px;
+        height: 50px;
+        padding: 4px;
+        &:hover {
+          background-color: $secondary-color-100;
+        }
+        &:disabled {
+          background-color: $secondary-color-200;
+          cursor: not-allowed;
+        }
+      }
     }
-    .disabled {
-      background-color: $primary-color-200;
-      cursor: not-allowed;
+    .generate {
+      background-color: $primary-color-300;
+      color: $background;
+      height: 50px;
+      font-weight: 600;
+      &:hover {
+        background-color: $primary-color-400;
+      }
+      &:disabled {
+        background-color: $primary-color-200;
+        cursor: not-allowed;
+      }
     }
   }
 }

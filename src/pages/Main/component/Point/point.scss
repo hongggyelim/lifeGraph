@@ -1,31 +1,35 @@
+@import "/src/variables.scss";
+
 .point {
   position: absolute;
   width: 1px !important;
   height: 24px !important;
   display: flex;
   align-items: center;
+  z-index: 40;
 
   .point-input {
-    width: 120px;
+    width: 100px;
     height: 30px;
-    font-size: 1.6rem;
-    color: black;
+    font-size: 1.5rem;
     padding-left: 4px;
-    &::placeholder {
-      font-size: 1.2rem;
-    }
+    color: $secondary-color-400;
     &:hover,
     &:active {
-      transform: scale(1.2);
-      transition-duration: 0.5s;
+      transform: scale(1.1);
+      transition-duration: 0.2s;
       background-color: white;
       border-radius: 20px;
+      border: 1px solid;
+      border-color: $secondary-color-100;
     }
   }
   .long {
-    width: 140px;
+    width: 120px;
   }
   button {
+    position: absolute;
+    right: 0;
     display: none;
     background-color: gray;
     color: white;

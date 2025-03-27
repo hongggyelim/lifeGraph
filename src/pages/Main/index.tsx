@@ -11,6 +11,16 @@ const MainPage = () => {
 
   const { points, resetPoints } = useGraphStore();
   const { name } = useInfo();
+  const handleClickBack = () => {
+    let confirm;
+    if (points.length >= 1) {
+      confirm = window.confirm(
+        "지금까지 입력한 데이터를 초기화하고 이전 페이지로 이동하시겠습니까?"
+      );
+    }
+    if (confirm) navigate("/");
+    resetPoints();
+  };
 
   const handleClickReset = () => {
     const deleteConfirm = window.confirm(
@@ -49,17 +59,28 @@ const MainPage = () => {
           )}
           <Graph />
           <div id="button-wrapper">
+            <div className="flex-row">
+              <button
+                type="button"
+                className={`button`}
+                onClick={handleClickBack}
+                disabled={!points.length} //길이 0이면 disabled true
+              >
+                Back
+              </button>
+              <button
+                type="button"
+                className={`button`}
+                onClick={handleClickReset}
+                disabled={!points.length} //길이 0이면 disabled true
+              >
+                Reset
+              </button>
+            </div>
             <button
               type="button"
-              className={`${points.length ? "reset" : "disabled"}`}
-              onClick={handleClickReset}
-              disabled={!points.length} //길이 0이면 disabled true
-            >
-              Reset
-            </button>
-            <button
-              type="button"
-              className={`${points.length ? "reset" : "disabled"}`}
+              className={`button generate`}
+              disabled={!points.length}
               onClick={handleClickGetResult}
             >
               그래프 생성하기

@@ -32,14 +32,13 @@ const Point = forwardRef<HTMLInputElement, PointProp>(
         }}
       >
         <input
-          className={`point-input ${title.length > 5 ? "long" : ""}`}
+          className={`point-input ${title.length > 7 ? "long" : ""}`}
           type="text"
           value={title}
           ref={ref}
           onChange={onChange}
           onClick={(e) => handleClickInput(e)}
           readOnly={!onChange && true}
-          placeholder="타이틀을 입력하세요"
         />
         {onDelete && (
           <button type="button" onClick={handleDelete}>
