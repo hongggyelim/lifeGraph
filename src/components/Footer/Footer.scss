@@ -1,5 +1,7 @@
 @import "../../variables.scss";
 footer {
+  position: absolute;
+  bottom: 0;
   padding: 40px 20px 20px;
   width: 100%;
   gap: 20px;

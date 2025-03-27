@@ -1,5 +1,35 @@
 @import "../../variables.scss";
 
+.home-main {
+  max-width: $width-desktop;
+  width: 40%;
+  margin: 20px auto;
+
+  @media (max-width: $mobile) {
+    max-width: $width-mobile;
+  }
+}
+
+.border {
+  height: 40dvh;
+  position: relative;
+  border: 1px solid;
+  border-color: $secondary-color-100;
+  background-color: $background;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 0 0 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  @media (max-width: $mobile) {
+    font-size: 1.4rem;
+  }
+}
 .home-div {
   display: flex;
   flex-direction: column;
@@ -9,10 +39,14 @@
   h1 {
     font-size: 3rem;
     font-weight: 700;
+    color: $primary-color-400;
+  }
+  p {
+    color: $secondary-color-400;
   }
   form {
     div {
-      width: 60%;
+      width: 80%;
     }
     label {
       font-weight: 500;
@@ -49,6 +83,11 @@
       font-size: 1.6rem;
       margin: 8px 0;
       cursor: pointer;
+
+      &:hover {
+        background-color: $primary-color-400;
+        transition: background-color 0.1s ease;
+      }
 
       &:disabled {
         background-color: $primary-color-200;

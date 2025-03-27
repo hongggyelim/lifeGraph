@@ -63,7 +63,7 @@ const Home = () => {
   };
   let validated = !errors.birth && !errors.name && info.birthYear && info.name;
   return (
-    <main>
+    <main className="home-main">
       <div className="home-div">
         <h1>인생 그래프</h1>
         <p>당신의 인생을 그려보세요</p>

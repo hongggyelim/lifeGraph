@@ -25,50 +25,18 @@
 }
 
 body {
+  position: relative;
   background-color: $background;
-  max-height: calc(100dvh - 10px);
+  max-height: calc(100dvh - 20px);
   background: linear-gradient(
-    rgba(208, 223, 250, 1),
+    rgb(221, 231, 250),
     rgba(255, 255, 255, 0.45284051120448177)
   );
-}
-
-// main 레이아웃
-main {
-  max-width: $width-desktop;
-  width: 90%;
-  margin: 20px auto;
-
-  @media (max-width: $mobile) {
-    max-width: $width-mobile;
-  }
-
-  .border {
-    height: 40dvh;
-    position: relative;
-    border: 1px solid;
-    border-color: $secondary-color-100;
-    background-color: $background;
-    border-radius: 12px;
-    padding: 20px;
-    margin: 0 0 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-
-    @media (max-width: $mobile) {
-      font-size: 1.4rem;
-    }
-  }
 }
 
 //Header, Footer 내부 nav 공통 스타일
 nav {
   max-width: $width-desktop;
-  margin: 0 auto;
   @media (max-width: $mobile) {
     max-width: $width-mobile;
   }

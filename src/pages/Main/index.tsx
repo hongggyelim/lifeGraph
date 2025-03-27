@@ -51,7 +51,11 @@ const MainPage = () => {
             >
               Reset
             </button>
-            <button type="button" onClick={handleClickGetResult}>
+            <button
+              type="button"
+              className={`${points.length ? "reset" : "disabled"}`}
+              onClick={handleClickGetResult}
+            >
               그래프 생성하기
             </button>
           </div>
