@@ -64,7 +64,7 @@ const MainPage = () => {
                 type="button"
                 className={`button`}
                 onClick={handleClickBack}
-                disabled={!points.length} //길이 0이면 disabled true
+                disabled={!points.length}
               >
                 Back
               </button>
@@ -72,7 +72,7 @@ const MainPage = () => {
                 type="button"
                 className={`button`}
                 onClick={handleClickReset}
-                disabled={!points.length} //길이 0이면 disabled true
+                disabled={!points.length}
               >
                 Reset
               </button>

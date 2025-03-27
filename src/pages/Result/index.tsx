@@ -78,9 +78,9 @@ const ResultPage = () => {
 
   return (
     <main>
-      <div className="main-div">
-        <h3>{name}님의 인생 그래프</h3>
-        <div className="border" ref={imageRef}>
+      <div className="result-div">
+        <h1 id="title">인생 그래프</h1>
+        <div className="result-border" ref={imageRef}>
           <b className="result-title">
             {name}님의 인생은 {resultType}
           </b>
@@ -92,7 +92,7 @@ const ResultPage = () => {
               onClick={() => navigate("/main")}
               data-html2canvas-ignore
             >
-              👈 뒤로 가기
+              Back
             </button>
             <div>
               <button
