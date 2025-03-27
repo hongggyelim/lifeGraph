@@ -34,7 +34,10 @@
     align-items: flex-start;
     padding: 8px 20px;
     box-shadow: 0 0 8px 0 rgba(151, 151, 151, 0.2);
-
+    list-style: disc;
+    li {
+      margin-left: 20px;
+    }
     .tip {
       color: $point-color;
       display: flex;

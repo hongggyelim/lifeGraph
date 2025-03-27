@@ -6,24 +6,24 @@
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0.6);
   width: 100%;
-  min-height: 400px;
+  height: 400px;
   cursor: not-allowed;
   border-radius: 8px;
   border: 1px solid $secondary-color-100;
 }
 .graph-container {
   position: relative;
-  display: flex;
-  flex-direction: column;
   width: 90%;
-  min-height: 400px;
+  height: 400px;
   cursor: crosshair;
-  @media (min-width: $desktop) {
-    padding: 0 400px;
-  }
 }
 
 .graph-spacer {
   width: 40px;
   height: 100%;
+}
+
+.result {
+  cursor: default;
+  z-index: 50;
 }

@@ -42,16 +42,15 @@ const MainPage = () => {
       <div className="main-div">
         <h1 id="title">인생 그래프</h1>
         <p id="subtitle">{name}님,기억에 남는 순간을 기록해보세요</p>
-        <div className="description">
+        <ul className="description">
           <b className="tip">
             <BsExclamationCircle />
             Tip !
           </b>
-          • 핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요
-          <br />
-          • 🖥️ 넓은 화면을 권장합니다
-          <br />• 그래프 생성하기를 누르고 이미지를 공유해보세요
-        </div>
+          <li>핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요</li>
+          <li>🖥️ 넓은 화면을 권장합니다</li>
+          <li>그래프 생성하기를 누르고 이미지를 공유해보세요</li>
+        </ul>
         <ScaleController />
         <div className="main-border">
           {points.length === 0 && (

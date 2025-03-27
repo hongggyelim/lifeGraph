@@ -14,14 +14,23 @@
     font-size: 1.5rem;
     padding-left: 4px;
     color: $secondary-color-400;
+    border-radius: 20px;
     &:hover,
     &:active {
       transform: scale(1.1);
       transition-duration: 0.2s;
       background-color: white;
-      border-radius: 20px;
       border: 1px solid;
       border-color: $secondary-color-100;
+    }
+    &:read-only {
+      &:hover {
+        transform: none;
+        background-color: transparent;
+        border-color: transparent;
+        transition: none;
+        cursor: default;
+      }
     }
   }
   .long {
