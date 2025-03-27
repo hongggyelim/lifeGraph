@@ -86,14 +86,28 @@ const ResultPage = () => {
           </b>
           <ResultGraph />
           <div id="result-button-wrapper">
-            <button type="button" id="back-button" onClick={() => navigate("/main")} data-html2canvas-ignore>
+            <button
+              type="button"
+              id="back-button"
+              onClick={() => navigate("/main")}
+              data-html2canvas-ignore
+            >
               👈 뒤로 가기
             </button>
             <div>
-              <button type="button" onClick={handleSaveImage} data-html2canvas-ignore>
+              <button
+                type="button"
+                onClick={handleSaveImage}
+                data-html2canvas-ignore
+              >
                 🖼️ 그래프 저장하기
               </button>
-              <button type="button" id="copy-button" onClick={handleCopyToClipboard} data-html2canvas-ignore>
+              <button
+                type="button"
+                id="copy-button"
+                onClick={handleCopyToClipboard}
+                data-html2canvas-ignore
+              >
                 📋 클립보드에 복사
               </button>
             </div>

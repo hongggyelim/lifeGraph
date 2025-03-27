@@ -59,8 +59,12 @@
       }
     }
 
-    #reset-button {
+    .reset {
+      background-color: $primary-color-300;
+    }
+    .disabled {
       background-color: $primary-color-200;
+      cursor: not-allowed;
     }
   }
 }

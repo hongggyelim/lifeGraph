@@ -12,7 +12,9 @@ const MainPage = () => {
   const { name } = useInfo();
 
   const handleClickReset = () => {
-    const deleteConfirm = window.confirm("지금까지 입력한 데이터를 삭제하시겠습니까?");
+    const deleteConfirm = window.confirm(
+      "지금까지 입력한 데이터를 삭제하시겠습니까?"
+    );
     if (deleteConfirm) resetPoints();
   };
 
@@ -36,10 +38,17 @@ const MainPage = () => {
         </p>
         <div className="border">
           <ScaleController />
-          {points.length === 0 && <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>}
+          {points.length === 0 && (
+            <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>
+          )}
           <Graph />
           <div id="button-wrapper">
-            <button type="button" id="reset-button" onClick={handleClickReset}>
+            <button
+              type="button"
+              className={`${points.length ? "reset" : "disabled"}`}
+              onClick={handleClickReset}
+              disabled={!points.length} //길이 0이면 disabled true
+            >
               Reset
             </button>
             <button type="button" onClick={handleClickGetResult}>
