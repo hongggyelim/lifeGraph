@@ -61,7 +61,7 @@ const Home = () => {
     // 다음 스텝으로 넘어가기
     if (!validationErrors.name && !validationErrors.birth) navigate("/main");
   };
-
+  let validated = !errors.birth && !errors.name && info.birthYear && info.name;
   return (
     <main>
       <div className="home-div">
@@ -87,13 +87,15 @@ const Home = () => {
               ref={birthYearRef}
               error={errors.birth}
             />
+            <button type="submit" disabled={!validated}>
+              시작하기
+            </button>
           </div>
-          <span>
-            * 입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다
-          </span>
-          <button type="submit">시작하기</button>
         </form>
       </div>
+      <span>
+        * 입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다
+      </span>
     </main>
   );
 };

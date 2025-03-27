@@ -29,7 +29,7 @@ const MainPage = () => {
   return (
     <main>
       <div className="main-div">
-        <h3>{name}님,기억에 남는 순간을 기록해보세요</h3>
+        <p>{name}님,기억에 남는 순간을 기록해보세요</p>
         <p className="description">
           <b>Tip ! </b>
           핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요
