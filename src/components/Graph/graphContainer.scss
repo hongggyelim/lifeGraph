@@ -13,8 +13,8 @@
 }
 .graph-container {
   position: relative;
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 90%;
   min-height: 400px;
   cursor: crosshair;

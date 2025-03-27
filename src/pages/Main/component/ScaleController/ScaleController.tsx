@@ -21,8 +21,10 @@ const ScaleController = () => {
         resetPoints();
         setScale(Number(e.target.value));
       }
+    } else {
+      setScale(Number(e.target.value));
+      console.log("else");
     }
-    setScale(Number(e.target.value));
   };
   return (
     <div className="controller-wrapper">
