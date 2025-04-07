@@ -4,6 +4,7 @@ import { useGraphStore } from "../../store/useGraphStore";
 import GraphContainer from "./GraphContainer";
 import { PointData } from "../../types/pointType";
 import useMovePointByWidth from "../../hooks/useMovePointByWidth";
+import { useLocation } from "react-router-dom";
 
 const Graph = () => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -44,6 +45,10 @@ const Graph = () => {
   const handleDeletePoint = (id: number) => {
     deletePoint(id);
   };
+
+  // result 페이지라면 별도 스타일
+  let location = useLocation();
+  let pathname = location.pathname.includes("result");
   return (
     <GraphContainer onClick={handleClickPoint}>
       {points.map((point) => (
