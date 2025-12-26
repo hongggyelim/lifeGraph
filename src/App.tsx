@@ -1,10 +1,10 @@
 import "./App.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import MainPage from "./pages/Main";
-import ResultPage from "./pages/Result";
-import NotFound from "./pages/NotFound";
-import Footer from "./components/Footer/Footer";
+import Home from "./pages/home";
+import MainPage from "./pages/main";
+import ResultPage from "./pages/result";
+import NotFound from "./pages/not-found";
+import Footer from "./components/footer/footer";
 
 function App() {
   return (

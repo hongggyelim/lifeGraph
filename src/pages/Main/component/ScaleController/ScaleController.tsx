@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
-import { useScaleStore } from "../../../../store/useScaleStore";
-import { useGraphStore } from "../../../../store/useGraphStore";
+import { useScaleStore } from "../../../../store/use-scale-store";
+import { useGraphStore } from "../../../../store/use-graph-store";
 import "./scaleController.scss";
 
 const ScaleController = () => {

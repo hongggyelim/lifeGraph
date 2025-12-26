@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./result.scss";
-import ResultGraph from "./Graph/ResultGraph";
+import ResultGraph from "./graph/result-graph";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
 import useInfo from "../../hooks/useInfo";
-import { useGraphStore } from "../../store/useGraphStore";
+import { useGraphStore } from "../../store/use-graph-store";
 
 const ResultPage = () => {
   const [imageBlob, setImageBlob] = useState<Blob | null>(null);

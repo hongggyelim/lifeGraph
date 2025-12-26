@@ -1,7 +1,7 @@
 import { MouseEvent } from "react";
-import "./graphContainer.scss";
-import XScale from "./XScale/XScale";
-import useMovePointByWidth from "../../hooks/useMovePointByWidth";
+import "./graph-container.scss";
+import XScale from "./x-scale/XScale";
+import useMovePointByWidth from "../../hooks/use-move-point-by-width";
 import { useLocation } from "react-router-dom";
 
 const GraphContainer = ({

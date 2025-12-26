@@ -1,10 +1,10 @@
 import { ChangeEvent, MouseEvent as ReactMouseEvent, useRef } from "react";
-import Point from "../../pages/Main/component/Point/Point";
-import { useGraphStore } from "../../store/useGraphStore";
-import GraphContainer from "./GraphContainer";
-import { PointData } from "../../types/pointType";
-import useMovePointByWidth from "../../hooks/useMovePointByWidth";
+import { useGraphStore } from "../../store/use-graph-store";
+import GraphContainer from "./graph-container";
+import { PointData } from "../../types/point.type";
+import useMovePointByWidth from "../../hooks/use-move-point-by-width";
 import { useLocation } from "react-router-dom";
+import Point from "../../pages/main/component/Point/Point";
 
 const Graph = () => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);

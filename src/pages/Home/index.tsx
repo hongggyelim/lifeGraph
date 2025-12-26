@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import InfoInput from "./component/InfoInput";
 import "./home.scss";
-import { InfoType } from "../../types/userInfoType";
+import { InfoType } from "../../types/user-info.type";
 import { useNavigate } from "react-router-dom";
-import { validateInput } from "../../util/validateInput";
+import { validateInput } from "../../util/validate-input";
 
 const Home = () => {
   const navigate = useNavigate();

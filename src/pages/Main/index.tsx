@@ -1,6 +1,6 @@
 import "./main.scss";
-import Graph from "../../components/Graph/Graph";
-import { useGraphStore } from "../../store/useGraphStore";
+import Graph from "../../components/graph/graph";
+import { useGraphStore } from "../../store/use-graph-store";
 import { useNavigate } from "react-router-dom";
 import ScaleController from "./component/ScaleController/ScaleController";
 import useInfo from "../../hooks/useInfo";

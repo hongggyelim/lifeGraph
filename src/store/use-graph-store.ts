@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { PointData } from "../types/pointType";
+import { PointData } from "../types/point.type";
 
 interface GraphStore {
   points: PointData[];
@@ -23,7 +23,9 @@ export const useGraphStore = create<GraphStore>((set) => ({
     })),
   setTitle: (id, title) =>
     set((state) => ({
-      points: state.points.map((point) => (point.id === id ? { ...point, title } : point)),
+      points: state.points.map((point) =>
+        point.id === id ? { ...point, title } : point
+      ),
     })),
   resetPoints: () => set({ points: [] }),
 }));

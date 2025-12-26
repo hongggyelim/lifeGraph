@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Point from "../../Main/component/Point/Point";
-import Path from "./Path";
-import GraphContainer from "../../../components/Graph/GraphContainer";
-import useMovePointByWidth from "../../../hooks/useMovePointByWidth";
+import Point from "../../main/component/Point/Point";
+import Path from "./path";
+import GraphContainer from "../../../components/graph/graph-container";
+import useMovePointByWidth from "../../../hooks/use-move-point-by-width";
 
 const ResultGraph = () => {
   const { points } = useMovePointByWidth();
@@ -19,7 +19,13 @@ const ResultGraph = () => {
     <GraphContainer>
       <Path sortedData={data} />
       {points.map((point) => (
-        <Point key={point.id} id={point.id} x={point.x} y={point.y} title={point.title} />
+        <Point
+          key={point.id}
+          id={point.id}
+          x={point.x}
+          y={point.y}
+          title={point.title}
+        />
       ))}
     </GraphContainer>
   );

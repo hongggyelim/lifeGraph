@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { InfoType } from "../types/userInfoType";
-import { useScaleStore } from "../store/useScaleStore";
+import { InfoType } from "../types/user-info.type";
+import { useScaleStore } from "../store/use-scale-store";
 
 const useInfo = () => {
   const [info, setInfo] = useState<InfoType>({

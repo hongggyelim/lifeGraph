@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { useGraphStore } from "../store/useGraphStore";
-import { PointData } from "../types/pointType";
+import { useGraphStore } from "../store/use-graph-store";
+import { PointData } from "../types/point.type";
 import debounce from "../util/debounce";
 
 const useMovePointByWidth = () => {
@@ -38,7 +38,10 @@ const useMovePointByWidth = () => {
   useEffect(() => {
     // 이미 저장된 points x좌표 조정
     if (width !== prevWidth && prevWidth !== 0) {
-      const newPoints: PointData[] = points.map((point) => ({ ...point, x: point.x * (width / prevWidth) }));
+      const newPoints: PointData[] = points.map((point) => ({
+        ...point,
+        x: point.x * (width / prevWidth),
+      }));
       setPoints(newPoints);
     }
     setPrevWidth(width);
