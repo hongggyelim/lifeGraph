@@ -1,4 +1,4 @@
 export interface InfoType {
   name: string;
-  birthYear: number;
+  birthYear: number | undefined;
 }

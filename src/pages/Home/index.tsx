@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
   const [info, setInfo] = useState<InfoType>({
     name: "",
-    birthYear: 1990,
+    birthYear: undefined,
   });
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -34,21 +34,17 @@ const Home = () => {
 
   const handleChangeInfo = (e: ChangeEvent<HTMLInputElement>) => {
     const { name: fieldName, value } = e.target;
-    if (fieldName === "name") {
-      setErrors((prev) => ({
-        ...prev,
-        name: "",
-      }));
-    } else {
-      setErrors((prev) => ({
-        ...prev,
-        birth: "",
-      }));
-    }
+
+    const parsedValue =
+      value === "" ? undefined : fieldName === "name" ? value : Number(value);
 
     setInfo((prev) => ({
       ...prev,
-      [fieldName]: fieldName === "name" ? value : Number(value),
+      [fieldName]: parsedValue,
+    }));
+    setErrors((prev) => ({
+      ...prev,
+      [fieldName]: "",
     }));
   };
 
@@ -62,6 +58,7 @@ const Home = () => {
     // e.preventDefault();
 
     const validationErrors = validateInput(info);
+
     setErrors((prev) => ({
       ...prev,
       name: validationErrors.name,
@@ -95,7 +92,7 @@ const Home = () => {
               name="birthYear"
               onChange={handleChangeInfo}
               onKeyDown={handleKeyDown}
-              value={info.birthYear}
+              value={info.birthYear ?? ""}
               ref={birthYearRef}
               error={errors.birth}
             />

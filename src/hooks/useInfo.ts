@@ -20,7 +20,7 @@ const useInfo = () => {
 
   // x축
   const currentYear = new Date().getFullYear();
-  const age = currentYear - birthYear + 1;
+  const age = currentYear - (birthYear ?? 0) + 1;
   const yearDiff = Math.round(age / scale);
 
   const xAxis = [];
@@ -31,8 +31,8 @@ const useInfo = () => {
 
         break;
       case "year":
-        if (birthYear + scale * i <= currentYear)
-          xAxis.push(birthYear + scale * i);
+        if (birthYear ?? 0 + scale * i <= currentYear)
+          xAxis.push(birthYear ?? 0 + scale * i);
         break;
     }
   }

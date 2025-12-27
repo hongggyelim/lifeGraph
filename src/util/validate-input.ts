@@ -1,4 +1,6 @@
-export const validateInput = (info: { name: string; birthYear: number }) => {
+import { InfoType } from "../types/user-info.type";
+
+export const validateInput = (info: InfoType) => {
   const errors: { name: string; birth: string } = { name: "", birth: "" };
 
   if (!info.name) {
