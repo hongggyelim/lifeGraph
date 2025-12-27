@@ -1,4 +1,4 @@
-const Path = ({ sortedData }: { sortedData: any }) => {
+const PathLine = ({ sortedData }: { sortedData: any }) => {
   const generatePath = (points: { x: number; y: number }[]) => {
     if (points.length < 2) return ""; // 최소 두 점 필요
 
@@ -39,4 +39,4 @@ const Path = ({ sortedData }: { sortedData: any }) => {
   );
 };
 
-export default Path;
+export default PathLine;

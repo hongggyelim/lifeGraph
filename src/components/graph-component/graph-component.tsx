@@ -4,7 +4,7 @@ import GraphContainer from "./graph-container";
 import { PointData } from "../../types/point.type";
 import useMovePointByWidth from "../../hooks/use-move-point-by-width";
 import { useLocation } from "react-router-dom";
-import Point from "../../pages/main/component/point/point";
+import Point from "../../pages/main-page/component/point/point-pin";
 
 const Graph = () => {
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);

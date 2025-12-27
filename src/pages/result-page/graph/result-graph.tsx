@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Point from "../../main/component/point/point";
-import Path from "./path";
-import GraphContainer from "../../../components/graph/graph-container";
+import Point from "../../main-page/component/point/point-pin";
+import GraphContainer from "../../../components/graph-component/graph-container";
 import useMovePointByWidth from "../../../hooks/use-move-point-by-width";
+import PathLine from "./path-line";
 
 const ResultGraph = () => {
   const { points } = useMovePointByWidth();
@@ -17,7 +17,7 @@ const ResultGraph = () => {
 
   return (
     <GraphContainer>
-      <Path sortedData={data} />
+      <PathLine sortedData={data} />
       {points.map((point) => (
         <Point
           key={point.id}

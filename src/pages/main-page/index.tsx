@@ -1,5 +1,5 @@
 import "./main.scss";
-import Graph from "../../components/graph/graph";
+import Graph from "../../components/graph-component/graph-component";
 import { useGraphStore } from "../../store/use-graph-store";
 import { useNavigate } from "react-router-dom";
 import ScaleController from "./component/scale-controller/scale-controller";
