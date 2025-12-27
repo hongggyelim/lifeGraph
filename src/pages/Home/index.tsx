@@ -33,10 +33,22 @@ const Home = () => {
   }, []);
 
   const handleChangeInfo = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name: fieldName, value } = e.target;
+    if (fieldName === "name") {
+      setErrors((prev) => ({
+        ...prev,
+        name: "",
+      }));
+    } else {
+      setErrors((prev) => ({
+        ...prev,
+        birth: "",
+      }));
+    }
+
     setInfo((prev) => ({
       ...prev,
-      [name]: name === "name" ? value : Number(value),
+      [fieldName]: fieldName === "name" ? value : Number(value),
     }));
   };
 
@@ -94,7 +106,7 @@ const Home = () => {
         </form>
       </div>
       <span>
-        * 입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다
+        입력된 정보는 결과 페이지에서만 사용되며 서버에 저장되지 않습니다
       </span>
     </main>
   );

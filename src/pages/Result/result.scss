@@ -8,7 +8,6 @@
   width: 80%;
   max-width: $desktop;
   margin: 0 auto;
-  padding: 20px;
   @media (max-width: $mobile) {
     gap: 8px;
   }
@@ -37,17 +36,12 @@
   #result-button-wrapper {
     width: 100%;
     display: flex;
-    gap: 20px;
     justify-content: space-between;
-    @media (max-width: $tablet) {
-      flex-direction: column-reverse;
-    }
     button {
       background-color: $primary-color-300;
       color: white;
-      font-size: 1.8rem;
-      height: 50px;
-      border-radius: 12px;
+      height: 40px;
+      border-radius: 8px;
       padding: 12px;
       cursor: pointer;
       transition: background-color 0.1s ease;
@@ -56,28 +50,23 @@
       }
       @media (max-width: $tablet) {
         font-size: 1.4rem;
-        width: 100%;
       }
     }
     #back-button {
       border: 1px solid;
       border-color: $secondary-color-200;
-      border-radius: 50%;
       background-color: $background;
       color: $secondary-color-400;
-      width: 50px;
-      height: 50px;
-      padding: 4px;
+      height: 40px;
+      padding: 8px;
       &:hover {
         background-color: $secondary-color-100;
       }
     }
     div {
       display: flex;
-      gap: 20px;
+      gap: 8px;
       @media (max-width: $mobile) {
-        flex-direction: column;
-        gap: 8px;
       }
       @media (max-width: $tablet) {
         justify-content: space-between;

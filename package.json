@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.5.1",
     "cra-template-typescript": "1.2.0",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",

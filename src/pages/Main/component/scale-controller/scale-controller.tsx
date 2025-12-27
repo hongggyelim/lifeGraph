@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { useScaleStore } from "../../../../store/use-scale-store";
 import { useGraphStore } from "../../../../store/use-graph-store";
-import "./scaleController.scss";
+import "./scale-controller.scss";
 
 const ScaleController = () => {
   // scale 기준 선택

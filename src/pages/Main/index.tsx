@@ -2,12 +2,15 @@ import "./main.scss";
 import Graph from "../../components/graph/graph";
 import { useGraphStore } from "../../store/use-graph-store";
 import { useNavigate } from "react-router-dom";
-import ScaleController from "./component/ScaleController/ScaleController";
+import ScaleController from "./component/scale-controller/scale-controller";
 import useInfo from "../../hooks/useInfo";
-import { BsExclamationCircle } from "react-icons/bs";
+import { useState } from "react";
+import { GoTriangleDown } from "react-icons/go";
+import classNames from "classnames";
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const [showTip, setShowTip] = useState(true);
 
   const { points, resetPoints } = useGraphStore();
   const { name } = useInfo();
@@ -17,6 +20,7 @@ const MainPage = () => {
         "지금까지 입력한 데이터를 초기화하고 이전 페이지로 이동하시겠습니까?"
       );
       if (confirm) navigate("/");
+      return;
     }
     navigate("/");
     resetPoints();
@@ -42,19 +46,28 @@ const MainPage = () => {
       <div className="main-div">
         <h1 id="title">인생 그래프</h1>
         <p id="subtitle">{name}님,기억에 남는 순간을 기록해보세요</p>
-        <ul className="description">
-          <b className="tip">
-            <BsExclamationCircle />
-            Tip !
-          </b>
-          <li>핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요</li>
-          <li>🖥️ 넓은 화면을 권장합니다</li>
-          <li>그래프 생성하기를 누르고 이미지를 공유해보세요</li>
-        </ul>
+        <div className="description" onClick={() => setShowTip(!showTip)}>
+          <button>
+            {showTip ? "설명 닫기" : "설명 열기"}
+            <GoTriangleDown
+              style={{
+                transform: `rotate(${showTip ? 180 : 0}deg)`,
+                transition: "transform 0.3s ease",
+              }}
+            />
+          </button>
+          <ul className={classNames(!showTip && "hidden")}>
+            <li>핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요</li>
+            <li>🖥️ 넓은 화면을 권장합니다</li>
+            <li>그래프 생성하기를 누르고 이미지를 공유해보세요</li>
+          </ul>
+        </div>
         <ScaleController />
         <div className="main-border">
           {points.length === 0 && (
-            <p id="guide">그래프를 그리고 싶은 위치에 클릭하세요</p>
+            <p style={{ pointerEvents: "none" }} id="guide">
+              그래프를 그리고 싶은 위치에 클릭하세요
+            </p>
           )}
           <Graph />
           <div id="button-wrapper">

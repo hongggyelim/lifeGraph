@@ -36,17 +36,6 @@ const useInfo = () => {
         break;
     }
   }
-  switch (mode) {
-    case "age":
-      if (xAxis.at(-1) !== age) xAxis.push(`${age}➡️`);
-      xAxis.push("");
-      break;
-    case "year":
-      if (xAxis.at(-1) !== currentYear) xAxis.push(`${currentYear}➡️`);
-      xAxis.push("");
-
-      break;
-  }
 
   return {
     name,

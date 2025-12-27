@@ -4,7 +4,7 @@
 /* 전체 페이지의 스크롤 스타일 */
 * {
   scrollbar-width: thin; /* Firefox용 */
-  scrollbar-color: $primary-color-300 #f1f1f1; /* Firefox용 */
+  scrollbar-color: $primary-color-100 #f1f1f1; /* Firefox용 */
 }
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
@@ -27,11 +27,6 @@
 body {
   position: relative;
   background-color: $background;
-  max-height: calc(100dvh - 20px);
-  background: linear-gradient(
-    rgb(221, 231, 250),
-    rgba(255, 255, 255, 0.45284051120448177)
-  );
   color: $secondary-color-400;
 }
 

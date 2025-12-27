@@ -1,4 +1,4 @@
-import "./xscale.scss";
+import "./x-scale.scss";
 import useInfo from "../../../hooks/useInfo";
 
 // x축 눈금

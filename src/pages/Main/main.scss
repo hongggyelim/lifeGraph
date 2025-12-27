@@ -6,10 +6,12 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
-  width: 80%;
+  width: 90%;
   max-width: $desktop;
   margin: 0 auto;
   @media (max-width: $mobile) {
+    font-size: 1.4rem;
+    padding: 0;
     gap: 8px;
   }
   #title {
@@ -17,12 +19,15 @@
     font-size: 3rem;
     font-weight: 700;
     color: $primary-color-400;
+    @media (max-width: $mobile) {
+      font-size: 2rem;
+    }
   }
   #subtitle {
     color: $secondary-color-400;
   }
   .description {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(227, 227, 227, 0.5);
     border: 1px solid;
     border-color: $secondary-color-100;
     border-radius: 8px;
@@ -33,22 +38,38 @@
     justify-content: center;
     align-items: flex-start;
     padding: 8px 20px;
-    box-shadow: 0 0 8px 0 rgba(151, 151, 151, 0.2);
     list-style: disc;
+    line-height: 150%;
+
+    @media (max-width: $mobile) {
+      font-size: 1.2rem;
+    }
+
+    cursor: pointer;
+    button {
+      display: flex;
+      align-items: center;
+      color: $secondary-color-300;
+      font-size: 1.2rem;
+    }
+    .hidden {
+      display: none;
+    }
+
     li {
       display: flex;
       align-items: center;
       margin: 0;
-      height: 28px;
       &::before {
         content: "•";
       }
+      &:first-child {
+        margin-top: 4px;
+      }
     }
-    .tip {
-      color: $point-color;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+
+    @media (max-width: $mobile) {
+      padding: 8px 12px;
     }
   }
   .main-border {
@@ -60,7 +81,7 @@
   }
   #guide {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.5);
@@ -76,14 +97,12 @@
     justify-content: space-between;
     gap: 20px;
     @media (max-width: $mobile) {
-      flex-direction: column-reverse;
-      justify-content: center;
       align-items: center;
       gap: 8px;
     }
     .button {
       font-size: 1.6rem;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 12px 8px;
       cursor: pointer;
       display: flex;
@@ -103,32 +122,35 @@
       button {
         border: 1px solid;
         border-color: $secondary-color-200;
-        border-radius: 50%;
         background-color: $background;
         color: $secondary-color-400;
-        width: 50px;
-        height: 50px;
-        padding: 4px;
+        height: 40px;
+        padding: 4px 12px;
         &:hover {
           background-color: $secondary-color-100;
         }
         &:disabled {
           background-color: $secondary-color-200;
           cursor: not-allowed;
+          color: white;
         }
       }
     }
     .generate {
       background-color: $primary-color-300;
       color: $background;
-      height: 50px;
-      font-weight: 600;
+      height: 40px;
+      width: 280px;
+      font-weight: 500;
       &:hover {
         background-color: $primary-color-400;
       }
       &:disabled {
         background-color: $primary-color-200;
         cursor: not-allowed;
+      }
+      @media (max-width: $mobile) {
+        width: 50%;
       }
     }
   }

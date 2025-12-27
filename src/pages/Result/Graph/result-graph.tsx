@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Point from "../../main/component/Point/Point";
+import Point from "../../main/component/point/point";
 import Path from "./path";
 import GraphContainer from "../../../components/graph/graph-container";
 import useMovePointByWidth from "../../../hooks/use-move-point-by-width";

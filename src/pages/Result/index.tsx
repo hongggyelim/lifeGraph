@@ -63,6 +63,7 @@ const ResultPage = () => {
 
   const handleSaveImage = async () => {
     if (imageBlob) saveAs(imageBlob, "life-graph.png");
+    alert("파일이 저장되었습니다.");
   };
 
   const handleCopyToClipboard = () => {
@@ -109,7 +110,7 @@ const ResultPage = () => {
                 onClick={handleSaveImage}
                 data-html2canvas-ignore
               >
-                🖼️ 그래프 저장하기
+                이미지 저장하기
               </button>
               <button
                 type="button"
@@ -117,7 +118,7 @@ const ResultPage = () => {
                 onClick={handleCopyToClipboard}
                 data-html2canvas-ignore
               >
-                📋 클립보드에 복사
+                클립보드에 복사
               </button>
             </div>
           </div>

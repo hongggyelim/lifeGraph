@@ -2,7 +2,7 @@
 
 .home-main {
   max-width: $width-desktop;
-  width: 40%;
+  width: 90%;
   margin: 20px auto;
 
   @media (max-width: $mobile) {
@@ -11,13 +11,12 @@
 }
 
 .border {
-  height: 40dvh;
   position: relative;
   border: 1px solid;
   border-color: $secondary-color-100;
   background-color: $background;
   border-radius: 8px;
-  padding: 20px;
+  padding: 28px 20px;
   margin: 0 0 20px;
   width: 100%;
   display: flex;

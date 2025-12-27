@@ -1,4 +1,4 @@
-import "./yscale.scss";
+import "./y-scale.scss";
 const YScale = () => {
   // - 100 부터 100까지
   const yAxis = [];

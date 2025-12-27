@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import "./graph-container.scss";
-import XScale from "./x-scale/XScale";
+import XScale from "./x-scale/x-scale";
 import useMovePointByWidth from "../../hooks/use-move-point-by-width";
 import { useLocation } from "react-router-dom";
 
@@ -16,9 +16,12 @@ const GraphContainer = ({
   let location = useLocation();
   let pathname = location.pathname.includes("result");
   return (
-    <div className={`${pathname && "result"} graph-wrapper`} ref={containerRef}>
+    <div
+      className={`${pathname ? "result" : ""} graph-wrapper`}
+      ref={containerRef}
+    >
       <div
-        className={`${pathname && "result"} graph-container`}
+        className={`${pathname ? "result" : ""} graph-container`}
         onClick={onClick}
       >
         {children}

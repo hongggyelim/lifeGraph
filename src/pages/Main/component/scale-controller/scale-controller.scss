@@ -2,7 +2,7 @@
 
 .controller-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
@@ -13,8 +13,6 @@
 }
 
 .controller {
-  height: 48px;
-  font-size: 1.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,8 +21,14 @@
   .control {
     cursor: pointer;
   }
+  label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
   @media (max-width: $tablet) {
-    height: 36px;
     justify-content: flex-start;
+    padding: 8px 12px;
+    font-size: 1.2rem;
   }
 }
