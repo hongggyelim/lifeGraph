@@ -16,7 +16,7 @@ const Home = () => {
   const birthYearRef = useRef<HTMLInputElement>(null);
   const [errors, setErrors] = useState({
     name: "",
-    birth: "",
+    birthYear: "",
   });
 
   useEffect(() => {
@@ -34,24 +34,26 @@ const Home = () => {
 
   const handleChangeInfo = (e: ChangeEvent<HTMLInputElement>) => {
     const { name: fieldName, value } = e.target;
-
-    const parsedValue =
-      value === "" ? undefined : fieldName === "name" ? value : Number(value);
-
-    setInfo((prev) => ({
-      ...prev,
-      [fieldName]: parsedValue,
-    }));
     setErrors((prev) => ({
       ...prev,
       [fieldName]: "",
     }));
-  };
 
-  //엔터 시 다음 필드로 이동 & 제출
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== "Enter") return;
-    handleSubmitInfo(e as unknown as FormEvent);
+    const parsedValue = () => {
+      if (fieldName === "name") {
+        return value === "" ? undefined : value;
+      }
+
+      if (value === "") return undefined;
+
+      const num = Number(value);
+      return Number.isNaN(num) ? undefined : num;
+    };
+
+    setInfo((prev) => ({
+      ...prev,
+      [fieldName]: parsedValue(),
+    }));
   };
 
   const handleSubmitInfo = (e: FormEvent) => {
@@ -62,15 +64,17 @@ const Home = () => {
     setErrors((prev) => ({
       ...prev,
       name: validationErrors.name,
-      birth: validationErrors.birth,
+      birthYear: validationErrors.birth,
     }));
+    if (validationErrors.name || validationErrors.birth) return;
 
-    // 제출 시 정보를 로컬스토리지에 저장
-    window.localStorage.setItem("info", JSON.stringify(info));
-    // 다음 스텝으로 넘어가기
-    if (!validationErrors.name && !validationErrors.birth) navigate("/main");
+    localStorage.setItem("info", JSON.stringify(info));
+    navigate("/main");
   };
-  let validated = !errors.birth && !errors.name && info.birthYear && info.name;
+  const isFilled =
+    info.name.trim() !== "" && typeof info.birthYear === "number";
+  console.log("에러", errors);
+  console.log("입력값", info);
   return (
     <main className="home-main">
       <div className="home-div">
@@ -82,7 +86,6 @@ const Home = () => {
               type="text"
               name="name"
               onChange={handleChangeInfo}
-              onKeyDown={handleKeyDown}
               value={info.name}
               ref={nameRef}
               error={errors.name}
@@ -91,12 +94,11 @@ const Home = () => {
               type="number"
               name="birthYear"
               onChange={handleChangeInfo}
-              onKeyDown={handleKeyDown}
               value={info.birthYear ?? ""}
               ref={birthYearRef}
-              error={errors.birth}
+              error={errors.birthYear}
             />
-            <button type="submit" disabled={!validated}>
+            <button type="submit" disabled={!isFilled}>
               시작하기
             </button>
           </div>

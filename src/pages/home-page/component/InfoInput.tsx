@@ -6,7 +6,7 @@ interface Props {
   value: string | number;
   ref: Ref<HTMLInputElement>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
   error?: string;
 }
 
