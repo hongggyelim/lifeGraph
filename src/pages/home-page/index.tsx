@@ -55,7 +55,7 @@ const Home = () => {
   };
 
   const handleSubmitInfo = (e: FormEvent) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const validationErrors = validateInput(info);
 

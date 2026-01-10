@@ -63,7 +63,6 @@ const ResultPage = () => {
 
   const handleSaveImage = async () => {
     if (imageBlob) saveAs(imageBlob, "life-graph.png");
-    alert("파일이 저장되었습니다.");
   };
 
   const handleCopyToClipboard = () => {
