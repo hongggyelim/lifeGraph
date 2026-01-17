@@ -59,7 +59,9 @@ const ResultPage = () => {
 
   useEffect(() => {
     if (image) getImage().then((blob) => setImageBlob(blob));
-  }, [image]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSaveImage = async () => {
     if (imageBlob) saveAs(imageBlob, "life-graph.png");
@@ -83,6 +85,8 @@ const ResultPage = () => {
 
   useEffect(() => {
     if (!points.length) navigate("/");
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

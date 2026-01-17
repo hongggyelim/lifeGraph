@@ -13,7 +13,9 @@ const ResultGraph = () => {
   useEffect(() => {
     const sorted = [...points].sort((a, b) => a.x - b.x);
     setData(sorted);
-  }, [points]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <GraphContainer>

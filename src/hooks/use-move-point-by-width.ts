@@ -45,7 +45,9 @@ const useMovePointByWidth = () => {
       setPoints(newPoints);
     }
     setPrevWidth(width);
-  }, [width, points, prevWidth]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [width, prevWidth]);
 
   return { width, points, containerRef };
 };
