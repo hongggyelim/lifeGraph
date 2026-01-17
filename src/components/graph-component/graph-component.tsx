@@ -46,9 +46,6 @@ const Graph = () => {
     deletePoint(id);
   };
 
-  // result 페이지라면 별도 스타일
-  let location = useLocation();
-  let pathname = location.pathname.includes("result");
   return (
     <GraphContainer onClick={handleClickPoint}>
       {points.map((point) => (

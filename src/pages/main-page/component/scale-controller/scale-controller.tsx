@@ -23,7 +23,6 @@ const ScaleController = () => {
       }
     } else {
       setScale(Number(e.target.value));
-      console.log("else");
     }
   };
   return (

@@ -41,9 +41,10 @@ const Home = () => {
 
     const parsedValue = () => {
       if (fieldName === "name") {
-        return value === "" ? undefined : value;
+        return value === "" ? "" : value;
       }
 
+      // birthYear
       if (value === "") return undefined;
 
       const num = Number(value);
@@ -71,10 +72,10 @@ const Home = () => {
     localStorage.setItem("info", JSON.stringify(info));
     navigate("/main");
   };
-  const isFilled =
-    info.name.trim() !== "" && typeof info.birthYear === "number";
-  console.log("에러", errors);
-  console.log("입력값", info);
+  const isFilled = () => {
+    if (!info.name || !info.birthYear) return false;
+    return info.name.trim() !== "" && typeof info.birthYear === "number";
+  };
   return (
     <main className="home-main">
       <div className="home-div">
