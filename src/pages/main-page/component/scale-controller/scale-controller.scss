@@ -1,4 +1,4 @@
-@import "/src/variables.scss";
+@use "../../../../variables.scss" as *;
 
 .controller-wrapper {
   display: flex;
@@ -13,6 +13,12 @@
 }
 
 .controller {
+  border: none;
+  margin: 0;
+  min-inline-size: 0;
+  legend {
+    float: left;
+  }
   display: flex;
   justify-content: center;
   align-items: center;

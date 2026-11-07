@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./reset";
+@use "./variables" as *;
+@use "./reset";
 
 /* 전체 페이지의 스크롤 스타일 */
 * {

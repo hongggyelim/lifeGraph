@@ -1,4 +1,4 @@
-@import "/src/variables.scss";
+@use "../../../../variables.scss" as *;
 
 .point {
   position: absolute;
