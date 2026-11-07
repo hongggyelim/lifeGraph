@@ -2,6 +2,10 @@
   "name": "life-graph",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "26.x"
+  },
   "dependencies": {
     "classnames": "^2.5.1",
     "file-saver": "^2.0.5",
@@ -35,6 +39,5 @@
     "typescript-eslint": "^8.72.1",
     "vite": "^6.4.5",
     "vitest": "^3.2.7"
-  },
-  "type": "module"
+  }
 }
