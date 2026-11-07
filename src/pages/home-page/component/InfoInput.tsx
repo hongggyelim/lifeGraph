@@ -1,39 +1,43 @@
-import { ChangeEvent, forwardRef, KeyboardEvent, Ref } from "react";
+import { ChangeEvent, InputHTMLAttributes } from "react";
 
 interface Props {
-  type: string;
-  name: string;
+  type: "text" | "number";
+  name: "name" | "birthYear";
   value: string | number;
-  ref: Ref<HTMLInputElement>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
   error?: string;
 }
 
-const InfoInput = forwardRef<HTMLInputElement, Props>(
-  ({ type, name, value, onChange, onKeyDown, error }, ref) => {
-    return (
-      <>
-        <label htmlFor={name}>
-          {name === "birthYear" ? "태어난 년도" : "이름"}
-          <input
-            ref={ref}
-            type={type}
-            value={value}
-            name={name}
-            onChange={onChange}
-            onKeyDown={onKeyDown}
-            placeholder={
-              name === "birthYear"
-                ? "네 자리 수를 입력해주세요 (YYYY)"
-                : "닉네임 또는 별명"
-            }
-          />
-          <p className="error">{error}</p>
-        </label>
-      </>
-    );
-  }
-);
+const FIELD_TEXT = {
+  name: { label: "이름", placeholder: "닉네임 또는 별명" },
+  birthYear: { label: "태어난 년도", placeholder: "네 자리 수를 입력해주세요 (YYYY)" },
+};
+
+const InfoInput = ({ type, name, value, onChange, error }: Props) => {
+  const { label, placeholder } = FIELD_TEXT[name];
+  const extraProps: InputHTMLAttributes<HTMLInputElement> =
+    type === "number" ? { inputMode: "numeric" } : {};
+  const errorId = `${name}-error`;
+
+  return (
+    <label htmlFor={name}>
+      {label}
+      <input
+        id={name}
+        type={type}
+        value={value}
+        name={name}
+        onChange={onChange}
+        placeholder={placeholder}
+        aria-invalid={!!error}
+        aria-describedby={errorId}
+        {...extraProps}
+      />
+      <p className="error" id={errorId}>
+        {error}
+      </p>
+    </label>
+  );
+};
 
 export default InfoInput;

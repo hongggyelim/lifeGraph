@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/result" element={<ResultPage />} />
-        <Route path="*" element={<NotFound />} /> {/* 404 페이지 */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

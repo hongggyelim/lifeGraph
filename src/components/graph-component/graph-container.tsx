@@ -1,27 +1,19 @@
-import { MouseEvent } from "react";
+import { MouseEvent, ReactNode } from "react";
+import classNames from "classnames";
 import "./graph-container.scss";
 import XScale from "./x-scale/x-scale";
-import useMovePointByWidth from "../../hooks/use-move-point-by-width";
-import { useLocation } from "react-router-dom";
 
-const GraphContainer = ({
-  children,
-  onClick,
-}: {
-  children: React.ReactNode;
+interface Props {
+  children: ReactNode;
+  readOnly?: boolean;
   onClick?: (e: MouseEvent<HTMLDivElement>) => void;
-}) => {
-  const { containerRef } = useMovePointByWidth();
-  // result 페이지라면 별도 스타일
-  let location = useLocation();
-  let pathname = location.pathname.includes("result");
+}
+
+const GraphContainer = ({ children, readOnly = false, onClick }: Props) => {
   return (
-    <div
-      className={`${pathname ? "result" : ""} graph-wrapper`}
-      ref={containerRef}
-    >
+    <div className={classNames("graph-wrapper", readOnly && "result")}>
       <div
-        className={`${pathname ? "result" : ""} graph-container`}
+        className={classNames("graph-container", readOnly && "result")}
         onClick={onClick}
       >
         {children}

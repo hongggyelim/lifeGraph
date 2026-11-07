@@ -1,16 +1,22 @@
 import { InfoType } from "../types/user-info.type";
 
-export const validateInput = (info: InfoType) => {
-  const errors: { name: string; birth: string } = { name: "", birth: "" };
+export const MIN_BIRTH_YEAR = 1900;
 
-  if (!info.name) {
+export const validateInput = (
+  info: InfoType,
+  currentYear = new Date().getFullYear()
+) => {
+  const errors = { name: "", birth: "" };
+
+  if (!info.name.trim()) {
     errors.name = "이름을 입력해주세요";
   }
 
-  if (!info.birthYear || info.birthYear < 1900 || info.birthYear > 2024) {
+  const { birthYear } = info;
+  if (birthYear === undefined || !Number.isInteger(birthYear)) {
     errors.birth = "태어난 년도를 입력해주세요 (예: 1990)";
-  } else if (String(info.birthYear).length !== 4) {
-    errors.birth = "태어난 년도는 4자리 숫자여야 합니다";
+  } else if (birthYear < MIN_BIRTH_YEAR || birthYear > currentYear) {
+    errors.birth = `${MIN_BIRTH_YEAR}년부터 ${currentYear}년 사이로 입력해주세요`;
   }
 
   return errors;

@@ -1,48 +1,18 @@
-import { useEffect, useState } from "react";
-import { InfoType } from "../types/user-info.type";
+import { useInfoStore } from "../store/use-info-store";
 import { useScaleStore } from "../store/use-scale-store";
+import { getXAxis } from "../util/x-axis";
+
+const DEFAULT_BIRTH_YEAR = 1990;
 
 const useInfo = () => {
-  const [info, setInfo] = useState<InfoType>({
-    name: "유저",
-    birthYear: 1990,
-  });
-  const { name, birthYear } = info;
-  const { scale, mode } = useScaleStore();
+  const name = useInfoStore((state) => state.name) || "유저";
+  const birthYear = useInfoStore((state) => state.birthYear) ?? DEFAULT_BIRTH_YEAR;
+  const scale = useScaleStore((state) => state.scale);
+  const mode = useScaleStore((state) => state.mode);
 
-  // 페이지 로드 시 로컬 데이터 가져오기
-  useEffect(() => {
-    const storedInfo = window.localStorage.getItem("info");
-    if (storedInfo) {
-      setInfo(JSON.parse(storedInfo));
-    }
-  }, []);
+  const xAxis = getXAxis({ birthYear, scale, mode });
 
-  // x축
-  const currentYear = new Date().getFullYear();
-  const age = currentYear - (birthYear ?? 0) + 1;
-  const yearDiff = Math.round(age / scale);
-
-  const xAxis = [];
-  for (let i = 0; i <= yearDiff; i++) {
-    switch (mode) {
-      case "age":
-        if (scale * i <= age) xAxis.push(scale * i);
-
-        break;
-      case "year":
-        if (birthYear ?? 0 + scale * i <= currentYear)
-          xAxis.push(birthYear ?? 0 + scale * i);
-        break;
-    }
-  }
-
-  return {
-    name,
-    birthYear,
-    yearDiff,
-    xAxis,
-  };
+  return { name, birthYear, xAxis };
 };
 
 export default useInfo;

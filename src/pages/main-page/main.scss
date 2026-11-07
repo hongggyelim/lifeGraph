@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@use "../../variables.scss" as *;
 
 .main-div {
   display: flex;
@@ -45,8 +45,8 @@
       font-size: 1.2rem;
     }
 
-    cursor: pointer;
     button {
+      cursor: pointer;
       display: flex;
       align-items: center;
       color: $secondary-color-300;

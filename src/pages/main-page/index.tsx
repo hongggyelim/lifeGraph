@@ -14,40 +14,46 @@ const MainPage = () => {
 
   const { points, resetPoints } = useGraphStore();
   const { name } = useInfo();
+
   const handleClickBack = () => {
-    if (points.length >= 1) {
-      let confirm = window.confirm(
+    if (
+      points.length > 0 &&
+      !window.confirm(
         "지금까지 입력한 데이터를 초기화하고 이전 페이지로 이동하시겠습니까?"
-      );
-      if (confirm) navigate("/");
+      )
+    ) {
       return;
     }
-    navigate("/");
     resetPoints();
+    navigate("/");
   };
 
   const handleClickReset = () => {
-    const deleteConfirm = window.confirm(
-      "지금까지 입력한 데이터를 삭제하시겠습니까?"
-    );
-    if (deleteConfirm) resetPoints();
+    if (window.confirm("지금까지 입력한 데이터를 삭제하시겠습니까?")) {
+      resetPoints();
+    }
   };
 
   const handleClickGetResult = () => {
     if (points.length < 2) {
       alert("두 개 이상 데이터를 입력해주세요");
-    } else {
-      navigate("/result");
+      return;
     }
+    navigate("/result");
   };
 
   return (
     <main>
       <div className="main-div">
         <h1 id="title">인생 그래프</h1>
-        <p id="subtitle">{name}님,기억에 남는 순간을 기록해보세요</p>
-        <div className="description" onClick={() => setShowTip(!showTip)}>
-          <button>
+        <p id="subtitle">{name}님, 기억에 남는 순간을 기록해보세요</p>
+        <div className="description">
+          <button
+            type="button"
+            aria-expanded={showTip}
+            aria-controls="tip-list"
+            onClick={() => setShowTip((prev) => !prev)}
+          >
             {showTip ? "설명 닫기" : "설명 열기"}
             <GoTriangleDown
               style={{
@@ -56,7 +62,7 @@ const MainPage = () => {
               }}
             />
           </button>
-          <ul className={classNames(!showTip && "hidden")}>
+          <ul id="tip-list" className={classNames(!showTip && "hidden")}>
             <li>핀📍을 선택해 텍스트를 수정하거나 삭제할 수 있어요</li>
             <li>🖥️ 넓은 화면을 권장합니다</li>
             <li>그래프 생성하기를 누르고 이미지를 공유해보세요</li>
@@ -72,17 +78,12 @@ const MainPage = () => {
           <Graph />
           <div id="button-wrapper">
             <div className="flex-row">
-              <button
-                type="button"
-                className={`button`}
-                onClick={handleClickBack}
-                // disabled={!points.length}
-              >
+              <button type="button" className="button" onClick={handleClickBack}>
                 Back
               </button>
               <button
                 type="button"
-                className={`button`}
+                className="button"
                 onClick={handleClickReset}
                 disabled={!points.length}
               >
@@ -91,8 +92,8 @@ const MainPage = () => {
             </div>
             <button
               type="button"
-              className={`button generate`}
-              disabled={!points.length}
+              className="button generate"
+              disabled={points.length < 2}
               onClick={handleClickGetResult}
             >
               그래프 생성하기

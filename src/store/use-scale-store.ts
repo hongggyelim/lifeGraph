@@ -1,22 +1,22 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { ScaleMode } from "../util/x-axis";
 
-interface GraphStore {
-  mode: "age" | "year";
+interface ScaleStore {
+  mode: ScaleMode;
   scale: number;
-  toggleMode: () => void;
+  setMode: (mode: ScaleMode) => void;
   setScale: (scale: number) => void;
 }
 
-export const useScaleStore = create<GraphStore>((set) => ({
-  mode: "age",
-  scale: 5,
-  toggleMode: () =>
-    set((state) => ({
-      mode: state.mode === "age" ? "year" : "age",
-      // 현재 mode가 age이면 year로 토글
-    })),
-  setScale: (scale) =>
-    set(() => ({
-      scale,
-    })),
-}));
+export const useScaleStore = create<ScaleStore>()(
+  persist(
+    (set) => ({
+      mode: "age",
+      scale: 5,
+      setMode: (mode) => set({ mode }),
+      setScale: (scale) => set({ scale }),
+    }),
+    { name: "life-graph-scale" }
+  )
+);

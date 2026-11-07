@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@use "../../variables.scss" as *;
 
 .home-main {
   max-width: $width-desktop;
@@ -59,7 +59,7 @@
       border: 1px solid;
       border-color: $secondary-color-100;
       height: 40px;
-      width: full;
+      width: 100%;
       padding: 8px 12px;
       margin: 4px 0;
       border-radius: 8px;
@@ -96,7 +96,7 @@
     }
   }
 }
-span {
+.home-main > .notice {
   color: gray;
   font-size: 1.4rem;
 }
